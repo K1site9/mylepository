@@ -11,27 +11,101 @@
     <!-- BootstrapのJS読み込み -->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </head>
-<header class="bg-dark text-light">
-    <div class ="container">
-        <div class="row">
-            <div class="col-8">
-                <h1 class>
-                    未経験者のためのシステム開発の教科書
-                </h1>
-            </div>
-            <div class="col-4">
-                <a class="text-light float-right" href="#">管理人の部屋</a>
-            </div>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">システム開発のミカタ</a>
+        <button type="button"
+                class="navbar-toggler"
+                data-toggle="collapse"
+                data-target="#Navber"
+                aria-controls="Navber"
+                aria-expanded="false"
+                aria-label="ナビゲーションの切り替え">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse"
+                    id="Navber">
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-link dropdown">
+                    <a href="#" class="nav-link dropdown-toggle"
+                                id="humanDropdown"
+                                role="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                        ヒューマンスキル
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="humanDropdown">
+                        <a class="dropdown-item" href="#">人間力</a>
+                        <a class="dropdown-item" href="#">システム設計</a>
+                    </div>
+                </li>
+
+                <li class="nav-link dropdown">
+                    <a href="#" class="nav-link dropdown-toggle"
+                                id="TechDropdown"
+                                role="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                        テクニカルスキル
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="TechDropdown">
+                        <a class="dropdown-item" href="#">java</a>
+                        <a class="dropdown-item" href="#">python</a>
+                    </div>
+                </li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0">
+                <input type="search" class="form-control mr-sm-2" placeholder="検索..." aria-label="検索...">
+                <button type="submit" class="btn btn-outline-success my-2 my-sm-0">検索</button>
+            </form>
         </div>
-    </div>
-    <div class ="container">
-        <nav class ="nav">
-            <a class="nav-link text-light" href="#">ヒューマンスキル</a>
-            <a class="nav-link text-light" href="#">テクニカルスキル</a>
-            <a class="nav-link text-light" href="#">その他</a>
-        </nav>
-    </div>
+    </nav>
 </header>
+
 <body>
+    <br>
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
+    <br>
+    <hr>
 </body>
 </html>
