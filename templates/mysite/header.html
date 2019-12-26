@@ -3,17 +3,22 @@
 {% load static %}
 <head>
     <meta charset="UTF-8">
-    <title>header</title>
+    <title>{% block title %}My amazing site{% endblock %}</title>
+
     <!-- BootstrapのCSS読み込み -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <!-- jQuery読み込み -->
     <script src="{% static 'jquery-3.4.1.js' %}"></script>
     <!-- BootstrapのJS読み込み -->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+
 </head>
+<body>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">システム開発のミカタ</a>
+        <a class="navbar-brand" href="#">高級食材のめもらんだむ</a>
         <button type="button"
                 class="navbar-toggler"
                 data-toggle="collapse"
@@ -49,7 +54,7 @@
                                 data-toggle="dropdown"
                                 aria-haspopup="true"
                                 aria-expanded="false">
-                        テクニカルスキル
+                        プログラミング
                     </a>
                     <div class="dropdown-menu" aria-labelledby="TechDropdown">
                         <a class="dropdown-item" href="#">java</a>
@@ -65,47 +70,8 @@
         </div>
     </nav>
 </header>
-
-<body>
-    <br>
-    <hr>
-    <br>
-    <hr>
-    <br>
-    <hr>
-    <br>
-    <hr>
-    <br>
-    <hr>
-    <br>
-    <hr>
-    <br>
-    <hr>
-    <br>
-    <hr>
-    <br>
-    <hr>
-    <br>
-    <hr>
-    <br>
-    <hr>
-    <br>
-    <hr>
-    <br>
-    <hr>
-    <br>
-    <hr>
-    <br>
-    <hr>
-    <br>
-    <hr>
-    <br>
-    <hr>
-    <br>
-    <hr>
-    <br>
-    <hr>
-    <br>
-    <hr>
+{% block content %}
+{% endblock %}
+<script src="{% static 'jquery_main.js' %}"></script>
 </body>
 </html>

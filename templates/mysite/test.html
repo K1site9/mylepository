@@ -1,0 +1,22 @@
+{% extends 'mysite/header.html' %}
+
+{% block title %}My amazing blog {%endblock%}
+
+{% block content %}
+<div class="row no-gutters">
+    <div class="col-12 col-md-3 p-2">
+        <dl id="index" class="rounded-lg">
+            <dt class="bg-info rounded-lg">目次</dt>
+        </dl>
+    </div>
+    <div class="col-12 col-md-9 p-2 mt-2 border rounded-lg" id="content">
+        <h1 class="h1c">タイトル1</h1>
+        <h2>タイトル2</h2>
+        <h3>タイトル3</h3>
+        <h4 class="code">タイトル4</h4>
+        <h3>タイトル3</h3>
+        <h6>タイトル6</h6>
+        <h1>タイトル1</h1>
+    </div>
+</div>
+{%endblock%}
