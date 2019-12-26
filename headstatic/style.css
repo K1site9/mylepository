@@ -1,0 +1,80 @@
+#index {
+    background: #f8f9fa;
+}
+dt {
+  background: #888;
+  padding: 15px;
+  font-weight: bold;
+  color: #fff;
+}
+dd{
+    margin: 0 10px;
+    padding: 10px;
+}
+dd:not(:last-child) {
+    border-bottom: 1px dotted #aaa;
+}
+.lv_h2  {
+    padding-left: 15px;
+}
+.lv_h3 {
+    padding-left: 20px;
+}
+.lv_h4 {
+    padding-left: 30px;
+}
+.lv_h5 {
+    padding-left: 35px;
+}
+.lv_h6 {
+    padding-left: 40px;
+}
+dd > a {
+    color: #333;
+    text-decoration: none;
+}
+dd > a::before {
+    content: "-";
+    margin-right: 5px;
+}
+
+h1 {
+  position: relative;
+  background: #dfefff;
+  box-shadow: 0px 0px 0px 5px #dfefff;
+  border: dashed 2px white;
+  padding: 0.2em 0.5em;
+  color: #454545;
+}
+
+h1:after {
+  position: absolute;
+  content: '';
+  left: -7px;
+  top: -7px;
+  border-width: 0 0 15px 15px;
+  border-style: solid;
+  border-color: #fff #fff #a8d4ff;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+h2 {
+  padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
+  color: #494949;/*文字色*/
+  background: #f4f4f4;/*背景色*/
+  border-left: solid 5px #7db4e6;/*左線*/
+  border-bottom: solid 3px #d7d7d7;/*下線*/
+}
+
+h3 {
+  border-bottom: solid 3px #cce4ff;
+  position: relative;
+}
+
+h3:after {
+  position: absolute;
+  content: " ";
+  display: block;
+  border-bottom: solid 3px #5472cd;
+  bottom: -3px;
+  width: 20%;
+}

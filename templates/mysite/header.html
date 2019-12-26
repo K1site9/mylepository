@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My amazing site{% endblock %}</title>
+
+    <!-- BootstrapのCSS読み込み -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- jQuery読み込み -->
+    <script src="{% static 'jquery-3.4.1.js' %}"></script>
+    <!-- BootstrapのJS読み込み -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">高級食材のめもらんだむ</a>
+        <button type="button"
+                class="navbar-toggler"
+                data-toggle="collapse"
+                data-target="#Navber"
+                aria-controls="Navber"
+                aria-expanded="false"
+                aria-label="ナビゲーションの切り替え">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse"
+                    id="Navber">
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-link dropdown">
+                    <a href="#" class="nav-link dropdown-toggle"
+                                id="humanDropdown"
+                                role="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                        ヒューマンスキル
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="humanDropdown">
+                        <a class="dropdown-item" href="#">人間力</a>
+                        <a class="dropdown-item" href="#">システム設計</a>
+                    </div>
+                </li>
+
+                <li class="nav-link dropdown">
+                    <a href="#" class="nav-link dropdown-toggle"
+                                id="TechDropdown"
+                                role="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                        プログラミング
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="TechDropdown">
+                        <a class="dropdown-item" href="#">java</a>
+                        <a class="dropdown-item" href="#">python</a>
+                    </div>
+                </li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0">
+                <input type="search" class="form-control mr-sm-2" placeholder="検索..." aria-label="検索...">
+                <button type="submit" class="btn btn-outline-success my-2 my-sm-0">検索</button>
+            </form>
+        </div>
+    </nav>
+</header>
+{% block content %}
+{% endblock %}
+<script src="{% static 'jquery_main.js' %}"></script>
+</body>
+</html>
