@@ -9,3 +9,11 @@ def home(request):
 
 def test(request):
     return render(request, 'mysite/test.html', )
+def test2(request):
+    return render(request, 'mysite/test2.html', )
+
+def git(request):
+    return render(request, 'mysite/memo/git.html', )
+
+def idea(request):
+    return render(request, 'mysite/humanskill/idea.html', )

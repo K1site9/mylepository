@@ -7,4 +7,7 @@ urlpatterns = [
     path('header/', views.index, name='index'),
     path('', views.home, name='home'),
     path('test/', views.test, name='test'),
+    path('test2/', views.test2, name='test2'),
+    path('memo/git/', views.git, name='git'),
+    path('humanskill/idea/', views.idea, name='idea'),
 ]

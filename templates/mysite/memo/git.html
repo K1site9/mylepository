@@ -1,0 +1,81 @@
+{% extends 'mysite/header.html' %}
+
+{% block title %}My amazing blog {%endblock%}
+
+{% block content %}
+{% load static %}
+<div class="row no-gutters">
+    <div class="col-12 col-md-3 p-2">
+        <dl id="index" class="rounded-lg">
+            <dt class="bg-info rounded-lg">目次</dt>
+        </dl>
+    </div>
+    <div class="col-12 col-md-9 p-2 mt-2 border rounded-lg" id="content">
+        <h1>gitコマンド早見表</h1>
+        <p>
+            gitの流れに沿ってコマンドを解説します。<br>
+            難しいコマンドはググればいいので、簡単に全体像を理解することに重点を置きました。
+        </p>
+        <h2>概要</h2>
+        <p>まずは用語から。</p>
+        <ul>
+            <li>
+                リポジトリ<br>
+                ソースの保存場所。<br>
+                ローカルリポジトリとリモートリポジトリがあり、基本的にはローカルに保存したものをリモートに送信する。
+            </li>
+            <li>
+                ステージングエリア（インデックス）<br>
+                リポジトリにソースを登録する前に、登録したいものは何かを挙げる場所。
+            </li>
+            <li>
+                ブランチ<br>
+                リポジトリの登録履歴管理ツール。履歴が枝分かれするツリー状になる<br>
+                絶対動作するブランチと作業ブランチを分けたりして使う。
+            </li>
+        </ul>
+        <p>※基本的には今居るブランチを確認して、<br>
+        作業ディレクトリ<br>
+        ⇒ステージングエリア<br>
+        ⇒ローカルリポジトリ<br>
+        ⇒（ブランチマージ）<br>
+        ⇒リモートリポジトリ<br>
+        と登録していく。
+        </p>
+        <h2>コマンド一覧</h2>
+        順に実行できる順番で書いていきます。
+        <h3>git config</h3>
+        <p>
+            gitに自分の情報を登録する。(windowsならその前にgitのインストールから)<br>
+            必ず自分の名前とE-mailを教える。
+<pre>
+ git config --global user.name "<自分の名前>"　　　　　　#名前の登録
+ git config --global user.name "<自分のE-mail>"　　　　#E-mailの登録
+</pre>
+        </p>
+        <h3>git init</h3>
+        <p>
+            このディレクトリをリポジトリにするよとgitに宣言(直下に&nbsp;.git&nbsp;ファイルが生成される)<br>
+            ディレクトリを移動してから実行しましょう。
+<pre>
+ git init    #リポジトリ作成
+</pre>
+        </p>
+        <h3>git add <ファイル名></h3>
+        <p>
+            ステージングエリアにファイルを登録する。<br>
+<pre>
+ git add　-A     #リポジトリ全体の変更があったファイルを登録
+ git add .      #カレントディレクトリ以下の変更があったファイルを登録
+ git add　*.py   #.py拡張子のすべてのファイルを登録
+</pre>
+        </p>
+    </div>
+</div>
+<script>
+$(function(){
+    $('pre').addClass('bg-dark text-white rounded-lg');
+});
+</script>
+<script src="{% static 'jquery_main.js' %}"></script>
+{% endblock %}

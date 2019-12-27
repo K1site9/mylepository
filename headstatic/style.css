@@ -66,15 +66,18 @@ h2 {
 }
 
 h3 {
-  border-bottom: solid 3px #cce4ff;
-  position: relative;
+  position: relative;/*相対位置*/
+  padding-left: 1.5em;/*アイコン分のスペース*/
+  line-height: 1.4;/*行高*/
+  color: black;/*文字色*/
 }
 
-h3:after {
-  position: absolute;
-  content: " ";
-  display: block;
-  border-bottom: solid 3px #5472cd;
-  bottom: -3px;
-  width: 20%;
+h3:before {
+  font-family: "Font Awesome 5 Free";/*忘れずに*/
+  content: "\f111";/*アイコンのユニコード*/
+  position: absolute;/*絶対位置*/
+  font-size: 1.2em;/*サイズ*/
+  left: 0;/*アイコンの位置*/
+  top: 0em;/*アイコンの位置*/
+  color: #a1ceff;
 }
