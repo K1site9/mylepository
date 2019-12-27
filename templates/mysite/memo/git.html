@@ -55,7 +55,7 @@
         </p>
         <h3>git init</h3>
         <p>
-            このディレクトリをリポジトリにするよとgitに宣言(直下に&nbsp;.git&nbsp;ファイルが生成される)<br>
+            このディレクトリをリポジトリにするよとgitに宣言(直下に .git ファイルが生成される)<br>
             ディレクトリを移動してから実行しましょう。
 <pre>
  git init    #リポジトリ作成
@@ -68,6 +68,14 @@
  git add　-A     #リポジトリ全体の変更があったファイルを登録
  git add .      #カレントディレクトリ以下の変更があったファイルを登録
  git add　*.py   #.py拡張子のすべてのファイルを登録
+</pre>
+        </p>
+        <h3>git commit<ファイル名></h3>
+        <p>
+            ステージングエリアの内容をリポジトリに登録する。<br>
+<pre>
+ git commit　-m"message"     #messageはコミットメッセージで必須
+ git commit -am"message"    #addと同時にcommitまで行う
 </pre>
         </p>
     </div>
