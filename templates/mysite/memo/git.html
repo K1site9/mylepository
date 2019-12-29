@@ -1,6 +1,6 @@
 {% extends 'mysite/header.html' %}
 
-{% block title %}My amazing blog {%endblock%}
+{% block title %}gitコマンド早見表{%endblock%}
 
 {% block content %}
 {% load static %}
@@ -44,16 +44,20 @@
         </p>
         <h2>コマンド一覧</h2>
         順に実行できる順番で書いていきます。
-        <h3>git config</h3>
+        <br>
+        <br>
+        <h3>git config　-設定</h3>
         <p>
             gitに自分の情報を登録する。(windowsならその前にgitのインストールから)<br>
             必ず自分の名前とE-mailを教える。
 <pre>
  git config --global user.name "<自分の名前>"　　　　　　#名前の登録
  git config --global user.name "<自分のE-mail>"　　　　#E-mailの登録
+ git config -l　    #設定一覧
 </pre>
         </p>
-        <h3>git init</h3>
+        <br>
+        <h3>git init　-宣言</h3>
         <p>
             このディレクトリをリポジトリにするよとgitに宣言(直下に .git ファイルが生成される)<br>
             このとき master というブランチが作られる。
@@ -62,7 +66,8 @@
  git init    #リポジトリ作成
 </pre>
         </p>
-        <h3>git add</h3>
+        <br>
+        <h3>git add　-indexに追加</h3>
         <p>
             ステージングエリアにファイルを登録する。<br>
             git add <ファイル名> でファイルを登録。
@@ -72,15 +77,18 @@
  git add　*.py   #.py拡張子のすべてのファイルを登録
 </pre>
         </p>
-        <h3>git commit</h3>
+        <br>
+        <h3>git commit -コミット</h3>
         <p>
             ステージングエリアの内容をリポジトリに登録する。<br>
 <pre>
  git commit　-m"message"     #messageはコミットメッセージで必須
  git commit -am"message"    #addと同時にcommitまで行う
+ git commit --amend         #前のコミットを上書きする(コメント間違えたときなど)
 </pre>
         </p>
-        <h3>git remote</h3>
+        <br>
+        <h3>git remote -リポジトリ宣言</h3>
         <p>
             リモートリポジトリを登録する。<br>
             git remote add <リポジトリ名> <リポジトリの場所>　で登録。
@@ -89,7 +97,8 @@
  git remote -v    #詳細な情報を表示
 </pre>
         </p>
-        <h3>git push</h3>
+        <br>
+        <h3>git push -プッシュ</h3>
         <p>
             リモートリポジトリにソースを登録する。<br>
             git push <リポジトリ名> <ブランチ名>　で登録。
@@ -98,17 +107,19 @@
  git push　-f origin master    #ソースを強制プッシュ
 </pre>
         </p>
-        <h3>git clone</h3>
+        <br>
+        <h3>git clone -コピー</h3>
         <p>
             リモートリポジトリの内容を別のリポジトリにコピーする（checkoutが行われる）<br>
-            git clone <リポジトリの場所> (<ディレクトリ名>)　でコピー。
+            git clone <リポジトリの場所> (<ディレクトリ名>)　でコピー。<br>
             ディレクトリを移動してから実行しましょう。
 <pre>
  git clone　https://github.com/username/lepositoryname.git    #リポジトリ名が作成されるディレクトリ名になる
  git clone　https://github.com/username/lepositoryname.git clonelepository　   #clonelepositoryがディレクトリ名になる
 </pre>
         </p>
-        <h3>git pull</h3>
+        <br>
+        <h3>git pull -プル</h3>
         <p>
             リモートリポジトリとローカルリポジトリの差分をローカルに持ってくる。<br>
             git pull <リポジトリ名> <ブランチ名>　で実行。
@@ -120,24 +131,29 @@
  git reset --hard origin/master    #取ってきた情報に強制的に合わせる
 </pre>
         </p>
-        <h3>git branch</h3>
+        <br>
+        <h3>git branch -ブランチ作成</h3>
         <p>
             git branch <ブランチ名> で実行。<br>
             今居るブランチから<ブランチ名>の枝が作られる。
 <pre>
  git branch work　    #workブランチ作成
+ git branch          #ブランチ一覧表示　* があるのが今居るブランチ
+ git branch -d work  #workブランチ削除
 </pre>
         </p>
-        <h3>git checkout</h3>
+        <br>
+        <h3>git checkout -ブランチ移動</h3>
         <p>
             git checkout <ブランチ名> で実行。<br>
-            <ブランチ名>　のブランチに移動。
+            <ブランチ名>　のブランチに移動。<br>
+            作業ディレクトリに変更があると移動できない。
 <pre>
- git branch work　    #workブランチ作成
- git branch          #　ブランチ一覧表示　* があるのが今居るブランチ
+ git checkout work　    #workブランチに移動
 </pre>
         </p>
-        <h3>git merge</h3>
+        <br>
+        <h3>git merge　-ブランチマージ</h3>
         <p>
             git merge <ブランチ名> で実行。<br>
             今居るブランチに <ブランチ名>　のブランチの変更を追加。
@@ -148,14 +164,8 @@
         </p>
         <hr>
         <h5>ここからはプラスαの知識です。</h5>
-        <h3>git config</h3>
-        <p>
-            設定を表示。
-<pre>
- git config -l　    #設定一覧
-</pre>
-        </p>
-        <h3>git log</h3>
+        <br>
+        <h3>git log -履歴</h3>
         <p>
             コミット履歴を表示。
 <pre>
@@ -165,21 +175,63 @@
  git log --stat       #どのファイルが変わったか
 </pre>
         </p>
-        <h3>git status</h3>
+        <br>
+        <h3>git status -状態確認</h3>
         <p>
             今のgitの状態を表示。
 <pre>
  git status 　  #変更されたファイルやaddされたファイルが表示される
 </pre>
         </p>
-        <h3>git diff</h3>
+        <br>
+        <h3>git diff -変更確認</h3>
         <p>
-            詳細な変更内容を見る
+            詳細な変更内容を見る。
 <pre>
- git diff             #作業ディレクトリとindexの差分
- git diff --cached    #indexとHEADの差分
+ git diff             #作業ディレクトリとindexの差分表示
+ git diff --cached    #indexとHEAD(最後のコミット)の差分表示
 </pre>
         </p>
+        <br>
+        <h3>git reset -復元</h3>
+        <p>
+            コミット状態を復元する。
+<pre>
+ git reset --hard HEAD          #一つ前のコミット状態を復元
+ git reset --hard HEAD^         #二つ前のコミット状態を復元(つまり直前のコミットの取り消し)
+ git reset --hard <コミットID>    #そのコミットを復元する
+ git reset --hard ORIG_HEAD     #リセットする一つ前に戻る（リセットをやめる）
+</pre>
+        </p>
+        <br>
+        <h3>git revert -履歴付き復元</h3>
+        <p>
+            コミット状態を復元する(履歴は残す)
+<pre>
+ git revert <コミットID>    #そのコミットを復元する
+</pre>
+        </p>
+        <br>
+        <h3>git rm -削除</h3>
+        <p>
+            ステージングエリアにファイルの削除を登録する。<br>
+            git rm <ファイル名> で実行。
+<pre>
+ git rm　*.py    #pyファイルを削除する
+</pre>
+        </p>
+        <br>
+        <h3>git mv -移動</h3>
+        <p>
+            ステージングエリアにファイルの移動を登録する。<br>
+            git rm <ファイルパス> <移動先のパス> で実行。
+<pre>
+ git mv *.py move/             #moveディレクトリ以下にpyファイルを移動
+ git mv hello.txt HELLO.txt    #リネームはmvでやるのが無難
+</pre>
+        </p>
+        <br>
+        <h5>以上！</h5>
     </div>
 </div>
 <script>
