@@ -1,6 +1,6 @@
     $(function(){
         var countId = 1
-        $("#content h2,#content h3,#content h4,#content h5,#content h6").each(function(){
+        $("#content h2,#content h3").each(function(){
             var ttl = $(this).text();
             var lv = this.nodeName.toLowerCase();
             this.id = 'ttl-' + countId;

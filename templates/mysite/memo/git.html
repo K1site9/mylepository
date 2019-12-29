@@ -56,21 +56,23 @@
         <h3>git init</h3>
         <p>
             このディレクトリをリポジトリにするよとgitに宣言(直下に .git ファイルが生成される)<br>
+            このとき master というブランチが作られる。
             ディレクトリを移動してから実行しましょう。
 <pre>
  git init    #リポジトリ作成
 </pre>
         </p>
-        <h3>git add <ファイル名></h3>
+        <h3>git add</h3>
         <p>
             ステージングエリアにファイルを登録する。<br>
+            git add <ファイル名> でファイルを登録。
 <pre>
  git add　-A     #リポジトリ全体の変更があったファイルを登録
  git add .      #カレントディレクトリ以下の変更があったファイルを登録
  git add　*.py   #.py拡張子のすべてのファイルを登録
 </pre>
         </p>
-        <h3>git commit<ファイル名></h3>
+        <h3>git commit</h3>
         <p>
             ステージングエリアの内容をリポジトリに登録する。<br>
 <pre>
@@ -78,11 +80,111 @@
  git commit -am"message"    #addと同時にcommitまで行う
 </pre>
         </p>
+        <h3>git remote</h3>
+        <p>
+            リモートリポジトリを登録する。<br>
+            git remote add <リポジトリ名> <リポジトリの場所>　で登録。
+<pre>
+ git remote　add　origin https://github.com/username/lepositoryname.git      #リモートリポジトリを登録
+ git remote -v    #詳細な情報を表示
+</pre>
+        </p>
+        <h3>git push</h3>
+        <p>
+            リモートリポジトリにソースを登録する。<br>
+            git push <リポジトリ名> <ブランチ名>　で登録。
+<pre>
+ git push　origin master    #ソースをプッシュ
+ git push　-f origin master    #ソースを強制プッシュ
+</pre>
+        </p>
+        <h3>git clone</h3>
+        <p>
+            リモートリポジトリの内容を別のリポジトリにコピーする（checkoutが行われる）<br>
+            git clone <リポジトリの場所> (<ディレクトリ名>)　でコピー。
+            ディレクトリを移動してから実行しましょう。
+<pre>
+ git clone　https://github.com/username/lepositoryname.git    #リポジトリ名が作成されるディレクトリ名になる
+ git clone　https://github.com/username/lepositoryname.git clonelepository　   #clonelepositoryがディレクトリ名になる
+</pre>
+        </p>
+        <h3>git pull</h3>
+        <p>
+            リモートリポジトリとローカルリポジトリの差分をローカルに持ってくる。<br>
+            git pull <リポジトリ名> <ブランチ名>　で実行。
+<pre>
+ git pull　origin master　    #差分を持ってくる
+
+ #強制pull
+ git fetch　origin master　   #細心の情報を取ってくる
+ git reset --hard origin/master    #取ってきた情報に強制的に合わせる
+</pre>
+        </p>
+        <h3>git branch</h3>
+        <p>
+            git branch <ブランチ名> で実行。<br>
+            今居るブランチから<ブランチ名>の枝が作られる。
+<pre>
+ git branch work　    #workブランチ作成
+</pre>
+        </p>
+        <h3>git checkout</h3>
+        <p>
+            git checkout <ブランチ名> で実行。<br>
+            <ブランチ名>　のブランチに移動。
+<pre>
+ git branch work　    #workブランチ作成
+ git branch          #　ブランチ一覧表示　* があるのが今居るブランチ
+</pre>
+        </p>
+        <h3>git merge</h3>
+        <p>
+            git merge <ブランチ名> で実行。<br>
+            今居るブランチに <ブランチ名>　のブランチの変更を追加。
+<pre>
+ git merge work　    #workブランチの変更を追加。
+</pre>
+            ※ブランチ間で変更を同時に行うと、コンフリクト（衝突）が発生する⇒エディタを起動して修正する。
+        </p>
+        <hr>
+        <h5>ここからはプラスαの知識です。</h5>
+        <h3>git config</h3>
+        <p>
+            設定を表示。
+<pre>
+ git config -l　    #設定一覧
+</pre>
+        </p>
+        <h3>git log</h3>
+        <p>
+            コミット履歴を表示。
+<pre>
+ git log 　            #コミット履歴表示
+ git log --oneline    #コメントだけ表示
+ git log -p           #詳しい情報
+ git log --stat       #どのファイルが変わったか
+</pre>
+        </p>
+        <h3>git status</h3>
+        <p>
+            今のgitの状態を表示。
+<pre>
+ git status 　  #変更されたファイルやaddされたファイルが表示される
+</pre>
+        </p>
+        <h3>git diff</h3>
+        <p>
+            詳細な変更内容を見る
+<pre>
+ git diff             #作業ディレクトリとindexの差分
+ git diff --cached    #indexとHEADの差分
+</pre>
+        </p>
     </div>
 </div>
 <script>
 $(function(){
-    $('pre').addClass('bg-dark text-white rounded-lg');
+    $('pre').addClass('bg-dark text-white rounded-sm');
 });
 </script>
 <script src="{% static 'jquery_main.js' %}"></script>

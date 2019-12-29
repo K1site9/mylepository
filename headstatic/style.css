@@ -58,26 +58,17 @@ h1:after {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
 }
 h2 {
-  padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
-  color: #494949;/*文字色*/
-  background: #f4f4f4;/*背景色*/
-  border-left: solid 5px #7db4e6;/*左線*/
-  border-bottom: solid 3px #d7d7d7;/*下線*/
+  color: #364e96;/*文字色*/
+  padding: 0.5em 0;/*上下の余白*/
+  border-top: solid 3px #364e96;/*上線*/
+  border-bottom: solid 3px #364e96;/*下線*/
 }
 
 h3 {
-  position: relative;/*相対位置*/
-  padding-left: 1.5em;/*アイコン分のスペース*/
-  line-height: 1.4;/*行高*/
-  color: black;/*文字色*/
+  padding: 0.25em 0.5em;/*上下 左右の余白*/
+  color: #494949;/*文字色*/
+  background: transparent;/*背景透明に*/
+  border-left: solid 5px #7db4e6;/*左線*/
 }
 
-h3:before {
-  font-family: "Font Awesome 5 Free";/*忘れずに*/
-  content: "\f111";/*アイコンのユニコード*/
-  position: absolute;/*絶対位置*/
-  font-size: 1.2em;/*サイズ*/
-  left: 0;/*アイコンの位置*/
-  top: 0em;/*アイコンの位置*/
-  color: #a1ceff;
-}
+
