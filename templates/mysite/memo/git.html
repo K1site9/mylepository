@@ -60,7 +60,7 @@
         <h3>git init　-宣言</h3>
         <p>
             このディレクトリをリポジトリにするよとgitに宣言(直下に .git ファイルが生成される)<br>
-            このとき master というブランチが作られる。
+            このとき master というブランチが作られる。<br>
             ディレクトリを移動してから実行しましょう。
 <pre>
  git init    #リポジトリ作成
@@ -132,7 +132,7 @@
 </pre>
         </p>
         <br>
-        <h3>git branch -ブランチ作成</h3>
+        <h3>git branch -ブランチ操作</h3>
         <p>
             git branch <ブランチ名> で実行。<br>
             今居るブランチから<ブランチ名>の枝が作られる。
@@ -201,6 +201,7 @@
  git reset --hard HEAD^         #二つ前のコミット状態を復元(つまり直前のコミットの取り消し)
  git reset --hard <コミットID>    #そのコミットを復元する
  git reset --hard ORIG_HEAD     #リセットする一つ前に戻る（リセットをやめる）
+ git reset --soft HEAD^         #ファイルは残したままコミットを取り消す
 </pre>
         </p>
         <br>

@@ -17,3 +17,6 @@ def git(request):
 
 def idea(request):
     return render(request, 'mysite/humanskill/idea.html', )
+
+def excel(request):
+    return render(request, 'mysite/memo/excel.html', )

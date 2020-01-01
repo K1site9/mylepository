@@ -1,0 +1,357 @@
+{% extends 'mysite/header.html' %}
+
+{% block title %}システム設計で使うExcel関数一覧{%endblock%}
+{% block header %}
+<style>
+    .tableExcel{
+        table-layout: fixed;
+        text-align: center;
+    }
+</style>
+{% endblock %}
+{% block content %}
+{% load static %}
+<div class="row no-gutters">
+    <div class="col-12 col-md-3 p-2">
+        <dl id="index" class="rounded-lg">
+            <dt class="bg-info rounded-lg">目次</dt>
+        </dl>
+    </div>
+    <div class="col-12 col-md-9 p-2 mt-2 border rounded-lg" id="content">
+        <h1>Excel関数まとめ</h1>
+        <p>
+            システム設計で使うExcel関数をまとめます。<br>
+            もっと難しい関数はググりましょう。<br>
+            <br>
+            実務で一番大事なのは関数ではなく作業速度です。<br>
+            もし作業が遅いようであれば、ショートカットや基本的な使い方から勉強するほうがいいと思います。<br>
+            （相対・絶対参照、フィルター、ウィンドウ枠固定、セル移動やコピーのショートカット...etc）<br>
+            <br>
+            なお、ここに乗せた以外にも、AND・OR・NOT・INT・MOD・ROUND<br>
+            ・CONCATENATE・RANK・RAND は基本情報試験にも出ていますので、<br>
+            覚えておいていいでしょう。
+        </p>
+        <h2>関数一覧</h2>
+        <h3>IF -仮定</h3>
+        <p>
+            <span class="font-weight-bold">IF(条件式, 真の値, 偽の値)</span><br>
+            条件式が真のとき第二引数、偽のとき第三引数がセルに入ります。
+        <table>
+            <thead>
+            <tr>
+                <th width="30" scope="col"></th>
+                <th scope="col">A</th>
+                <th scope="col">B</th>
+                <th scope="col">C</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>名前</td>
+                <td>点数</td>
+                <td>式</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>田中太郎</td>
+                <td>70</td>
+                <td class="table-primary">=IF(B2>=80,"合格","不合格")</td>
+            </tr>
+            </tbody>
+        </table>
+        <span class="text-primary">#不合格</span>
+        </p>
+        <br>
+
+        <h3>COUNTIF -条件付き個数</h3>
+        <p>
+            <span class="font-weight-bold">COUNTIF(範囲, 条件)</span><br>
+            範囲内で条件式に一致するセルの個数を数えます。<br>
+            ※COUNTIFSを使うことで複数条件を使用できます。
+        <table>
+            <thead>
+            <tr>
+                <th width="30" scope="col"></th>
+                <th scope="col">A</th>
+                <th scope="col">B</th>
+                <th scope="col">C</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>名前</td>
+                <td>点数</td>
+                <td>式</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>田中太郎</td>
+                <td>50</td>
+                <td class="table-primary">=COUNTIF(B2:B5, ">=70")</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>田中次郎</td>
+                <td>60</td>
+                <td class="table-success">=COUNTIF(A2:A5, "*田中")</td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td>田中花子</td>
+                <td>80</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td>佐藤一郎</td>
+                <td>70</td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+        <span class="text-primary">#3</span>
+        <span class="text-success">#2</span>
+        </p>
+        <br>
+        <h3>INDEX -表引き</h3>
+        <p>
+            <span class="font-weight-bold">INDEX(範囲, 縦位置, 横位置)</span> 横位置は省略できます。<br>
+            範囲内の縦いくつ、横いくつの位置にあるセルの値を調べる関数です。<br>
+            ※INDEX(参照, 縦位置, 横位置, 領域番号)を使うことで複数領域の範囲を表引きできます。
+        <table>
+            <thead>
+            <tr>
+                <th width="30" scope="col"></th>
+                <th width="30" scope="col">A</th>
+                <th width="30" scope="col">B</th>
+                <th width="30" scope="col">C</th>
+                <th scope="col">D</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>１</td>
+                <td>2</td>
+                <td>3</td>
+                <td class="table-primary">=INDEX(A1:C3,2,3)</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+        <span class="text-primary">#6</span>
+        </p>
+        <br>
+        <h3>VLOOKUP -垂直照合</h3>
+        <p>
+            <span class="font-weight-bold">VLOOKUP（検索値, 範囲, 列番号, 検索の型）</span><br>
+            指定された範囲の1列目で値を検索し、その指定範囲内の別の列の同じ行にある値を返します。<br>
+            検索の型はFalseにすることでデータが見つからなかったときエラーになります。
+        <table>
+            <thead>
+            <tr>
+                <th width="30" scope="col"></th>
+                <th scope="col">A</th>
+                <th scope="col">B</th>
+                <th width="50" scope="col">C</th>
+                <th width="50" scope="col">D</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>氏名：</td>
+                <td class="table-primary">=VLOOKUP("0002",A5:D8,2,False)</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>点数：</td>
+                <td class="table-success">=VLOOKUP("0002",A5:D8,3,False)</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td>番号</td>
+                <td>名前</td>
+                <td>点数</td>
+                <td>性別</td>
+            </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td>0001</td>
+                <td>田中太郎</td>
+                <td>50</td>
+                <td>男</td>
+            </tr>
+            <tr>
+                <th scope="row">6</th>
+                <td>0002</td>
+                <td>田中次郎</td>
+                <td>60</td>
+                <td>男</td>
+            </tr>
+            <tr>
+                <th scope="row">7</th>
+                <td>0003</td>
+                <td>田中花子</td>
+                <td>80</td>
+                <td>女</td>
+            </tr>
+            <tr>
+                <th scope="row">8</th>
+                <td>0004</td>
+                <td>佐藤一郎</td>
+                <td>70</td>
+                <td>男</td>
+            </tr>
+            </tbody>
+        </table>
+        <span class="text-primary">#田中次郎</span>
+        <span class="text-success">#60</span>
+        </p>
+        <br>
+        <h3>HLOOKUP -水平照合</h3>
+        <p>
+            HLOOKUPはVLOOKUPの水平Verです。<br>
+            同じ使い方ができ、第三引数は行番号です。
+        </p>
+        <br>
+        <h3>MATCH -照合一致</h3>
+        <p>
+            <span class="font-weight-bold">MATCH(検索値,範囲,一致か近似値か)</span><br>
+            範囲内から指定した値を探して、範囲内の上から数えた位置を求める関数です。<br>
+            第三引数は0,1または-1を入れて、<br>
+            0:完全一致値を探します。<br>
+            1または-1:近似値を探しますが、あらかじめ検索範囲はソートされてなければいけません。
+        <table>
+            <thead>
+            <tr>
+                <th width="30" scope="col"></th>
+                <th scope="col">A</th>
+                <th scope="col">B</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>番号</td>
+                <td>式</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>0001</td>
+                <td class="table-primary">=MATCH("0003",A2:A5,1)</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>0002</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td>0003</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td>0004</td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+        <span class="text-primary">#3</span>
+        </p>
+        <br>
+        <h3>SUMIF -条件付き合計</h3>
+        <p>
+            <span class="font-weight-bold">SUMIF(範囲,検索条件,合計範囲)</span><br>
+            条件に一致するセルに対応するセルを合計します。<br>
+            ※SUMIFS関数で複数条件を指定できます。
+        <table>
+            <thead>
+            <tr>
+                <th width="30" scope="col"></th>
+                <th scope="col">A</th>
+                <th scope="col">B</th>
+                <th scope="col">C</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>教科</td>
+                <td>点数</td>
+                <td>式</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>国語</td>
+                <td>50</td>
+                <td class="table-primary">=SUMIF(A2:A6,"<>社会",B2:B6)</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>数学</td>
+                <td>60</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td>英語</td>
+                <td>70</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td>理科</td>
+                <td>80</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">6</th>
+                <td>社会</td>
+                <td>90</td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+        <span class="text-primary">#260</span>
+        </p>
+        <br>
+        <h5>以上！</h5>
+    </div>
+</div>
+<script>
+    $(function(){
+        $('table').addClass('table-bordered tableExcel');
+        $('thead').addClass('table-secondary');
+        $('th').addClass('table-secondary');
+    });
+</script>
+<script src="{% static 'jquery_main.js' %}"></script>
+{% endblock %}
