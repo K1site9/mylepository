@@ -1,0 +1,206 @@
+{% extends 'mysite/header.html' %}
+
+{% block title %}java基本文法{%endblock%}
+
+{% block content %}
+{% load static %}
+<div class="row no-gutters">
+    <div class="col-12 col-md-3 p-2">
+        <dl id="index" class="rounded-lg">
+            <dt class="bg-info rounded-lg">目次</dt>
+        </dl>
+    </div>
+    <div class="col-12 col-md-9 p-2 mt-2 border rounded-lg" id="content">
+        <h1>java基本構文</h1>
+
+        <h3>変数・定数宣言</h3>
+        <p>
+            型 変数名 で宣言する。<br>
+            定数にはfinalをつけ、慣習的にラージスネークケースにする。
+<pre class="prettyprint linenums">
+ String　str　= null;    //変数
+ final String STR = "msg";    //定数
+ long l = 1111111111L;    //long型は最後にLで宣言
+ float f = 1111.111F;    //float型は最後にFで宣言
+ double d = 1111.111;    //小数点はdoubleになる
+ char c = 'c';    //char型は''で
+ str = "a\na\ta";    //\n:改行 \t:タブ
+</pre>
+            インスタンスフィールド変数は初期値を持つ。<br>
+            ※ローカル変数は初期化しないとコンパイルエラー
+            <table class="table-bordered">
+                <thead class=" table-secondary">
+                    <tr>
+                        <th  scope="col">型</th>
+                        <th  scope="col">初期値</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>参照型</td>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>boolean</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>char</td>
+                        <td>\u0000</td>
+                    </tr>
+                    <tr>
+                        <td>byte, short, int, long</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>float, double</td>
+                        <td>0.0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+        <br>
+        <h3>演算子</h3>
+        <p>
+            演算子には優先順位があり、表の上から優先順位が高い。
+            <table class="table-bordered">
+                <thead class=" table-secondary">
+                    <tr>
+                        <th  scope="col">演算子</th>
+                        <th  scope="col">式の結合始点（右は右辺から実行）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>++(後) --(後) (キャスト)</td>
+                        <td>左</td>
+                    </tr>
+                    <tr>
+                        <td>! ++(前) --(前) </td>
+                        <td>右</td>
+                    </tr>
+                    <tr>
+                        <td>new</td>
+                        <td>右</td>
+                    </tr>
+                    <tr>
+                        <td>* / %</td>
+                        <td>左</td>
+                    </tr>
+                    <tr>
+                        <td>+ -</td>
+                        <td>左</td>
+                    </tr>
+                    <tr>
+                        <td>+ -</td>
+                        <td>左</td>
+                    </tr>
+                    <tr>
+                        <td>< > <= >= instanceof</td>
+                        <td>左</td>
+                    </tr>
+                    <tr>
+                        <td>== !=</td>
+                        <td>左</td>
+                    </tr>
+                    <tr>
+                        <td>& ^ |</td>
+                        <td>左</td>
+                    </tr>
+                    <tr>
+                        <td>&& ||</td>
+                        <td>左</td>
+                    </tr>
+                    <tr>
+                        <td>?:</td>
+                        <td>右</td>
+                    </tr>
+                    <tr>
+                        <td>= *= /= %=</td>
+                        <td>右</td>
+                    </tr>
+                </tbody>
+            </table>
+            ※ << などのビット演算子もありますが、まだ使用したことがないので省きました。<br>
+            難しいものだけ解説すると、<br>
+            キャストは (String) みたいなキャスト演算子<br>
+            instanceofは クラスやインターフェースのインスタンスかをbooleanで返す演算子<br>
+            ^はbooleanのどちらか片方だけがtrueのとき、trueを返す演算子<br>
+            ?: は三項演算子と呼ばれるもの。
+        </p>
+        <br>
+        <h3>if</h3>
+        <p>
+<pre class="prettyprint linenums">
+ if (条件式) {
+     //処理
+ } elseif (条件式) {
+    　//処理
+ } else {
+     //処理
+ }
+</pre>
+            ちなみに {} を省略することもできて、<br>
+            その場合は if句と else句の下一行が実行されます。
+        </p>
+        <br>
+        <h3>switch</h3>
+        <p>
+<pre class="prettyprint linenums">
+ String singou = "red";
+ switch (singou) {
+     case "red":
+            //処理
+     break;
+     case "yellow":
+         //処理
+     break;
+     case "blue":
+         //処理
+     break;
+     default:
+         //処理
+ }
+</pre>
+        defaultはどのケースでもないとき実行される。<br>
+        breakがないとその下がすべて実行される<br>
+        使える型は、byte, short, int, char, enum, String
+        </p>
+        <br>
+        <h3>while　dowhile</h3>
+        <p>
+<pre class="prettyprint linenums">
+ while (条件式) {
+     //処理
+ }
+
+ do {
+     //処理
+ } while (条件式);
+</pre>
+            条件式が真の間処理が実行される。<br>
+            処理の中で条件式に使われる変数をインクリメントするのが鉄板。<br>
+            while と dowhile の違いは判定の場所。
+        </p>
+        <br>
+        <h3>for</h3>
+        <p>
+<pre class="prettyprint linenums">
+ for (int i=0; i<5; i++){
+     if (i < 2) {
+          continue;    //ループ終了
+     } else {
+          break;    //次のループ
+     }
+ }
+</pre>
+            for(①カウンター宣言; ②条件式; ③カウンタ変数の増減) と書く。<br>
+            ①、②，③はそれぞれ省略ができる。 for(;;); も間違いではない。<br>
+            ※java8ではfor文は実は非推奨なのだそうな、、、
+        </p>
+        <br>
+    </div>
+</div>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=java&skin=desert"></script>
+<script src="{% static 'jquery_main.js' %}"></script>
+{%endblock%}

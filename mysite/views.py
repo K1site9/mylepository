@@ -20,3 +20,12 @@ def idea(request):
 
 def excel(request):
     return render(request, 'mysite/memo/excel.html', )
+
+def java(request):
+    return render(request, 'mysite/techskill/java/java.html', )
+
+def javabase(request):
+    return render(request, 'mysite/techskill/java/javabase.html', )
+
+def javaconst(request):
+    return render(request, 'mysite/techskill/java/javaconst.html', )

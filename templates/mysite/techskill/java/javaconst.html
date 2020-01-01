@@ -1,0 +1,117 @@
+{% extends 'mysite/header.html' %}
+
+{% block title %}javaクラス関係まとめ{%endblock%}
+
+{% block content %}
+{% load static %}
+    <div class="col-12p-2 mt-2 border rounded-lg" id="content">
+        <h1>javaクラス関係まとめ</h1>
+        <p>
+            クラス関係の仕様についてまとめる。<br>
+            継承とインターフェースを実装したクラスを例にとる。<br>
+            まずは親クラスのAnimalクラスから。<br>
+<pre class="prettyprint linenums">
+ public class Animal {
+    //コンストラクタ
+    Animal(){
+        System.out.println("new Animal created");
+    }
+    //引数付きコンストラクタ
+    Animal(String species){
+        System.out.println("new " + species + " created");
+    }
+
+    void animalMethod() {
+        System.out.println("this is animal method!");
+    }
+
+    void characteristic() {
+        System.out.println("I'm alive!");
+    }
+}
+</pre>
+        </p>
+        <p>
+            次にインターフェース。
+<pre class="prettyprint linenums">
+ //インターフェース宣言
+ interface Breath {
+    //メンバ変数は勝手にstatic finalになる
+    String breath = "Breathing!";
+    //インターフェースのメソッドは本文なし
+    void breath(String breath);
+}
+</pre>
+        </p>
+        <p>
+            次にAnimalクラスとインターフェースを実装した子クラス。
+<pre class="prettyprint linenums">
+ //継承とインターフェース実装
+ public class Dog extends Animal implements Breath{
+    //コンストラクタはなにもしなくても super() されるが、
+    //明示することで親の引数付きコンストラクタを指定できる。
+    Dog(){
+        super("Dog");
+    }
+
+    //オーバーライド
+    //インターフェースの抽象メソッドはオーバーライドしないとエラー。
+    @Override
+    public void breath(String breath) {
+        System.out.println(breath);
+    }
+
+    //オーバーライド
+    @Override
+    public void characteristic() {
+        System.out.println("I have 4 legs!");
+    }
+ }
+</pre>
+        </p>
+        <p>
+            最後にmain関数。
+<pre class="prettyprint linenums">
+ public class Main {
+
+    public static void main(String[] args) {
+
+        Dog dog = new Dog();        //①new Dog created
+
+        dog.animalMethod();         //②this is animal method!
+
+        //インターフェースのメンバ変数はすべてstatic final
+        dog.breath(Breath.breath); //③Breathing!
+
+        dog.characteristic();      //④I have 4 legs!
+
+        Animal dogA = new Dog();  //⑤new Dog created
+
+        //dogA.breath();          //⑥
+
+        dogA.characteristic();    //⑦I have 4 legs!
+    }
+ }
+</pre>
+            ①はDogインスタンスの生成で、Dogクラスのコンストラクタが呼ばれている。<br>
+            <br>
+            ②は継承されたメソッド。<br>
+            <br>
+            ③はインターフェースのDogクラスでオーバーライドしたメソッド。<br>
+            <br>
+            ④はAnimalクラスのDogクラスでオーバーライドしたメソッド。<br>
+            <br>
+            ⑤はDogインスタンスをAnimal型変数に入れている。（逆はできない）<br>
+            <br>
+            ⑥はAnimal型なので、breathは実装されておらず使用できないの意。<br>
+            <br>
+            ⑦はAnimal型だがnewしたのはDogで、アップキャストされてもDogのcharacteristicになる。
+            <br>
+            <br>
+            以上！
+            今回は継承周りをまとめてみた。<br>
+            ちなみに、抽象クラスというものもあるが、とインターフェースの違いは、多重継承ができるかどうからしい。
+        </p>
+    </div>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=java&skin=desert"></script>
+{%endblock%}

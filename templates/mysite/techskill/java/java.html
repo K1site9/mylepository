@@ -1,0 +1,36 @@
+{% extends 'mysite/header.html' %}
+
+{% block title %}java備忘録{%endblock%}
+
+{% block content %}
+    <div class="col-12 p-2 mt-2 border rounded-lg" id="content">
+        <div class="card">
+            <div class="card-header">Javaまとめ</div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <a href="/techskill/java/base">基本文法</a>
+                    <p>内容</p>
+                    <ul>
+                        <li>変数宣言</li>
+                        <li>演算子</li>
+                        <li>if</li>
+                        <li>switch</li>
+                        <li>while</li>
+                        <li>for</li>
+                    </ul>
+                </li>
+                <li class="list-group-item">
+                    <a href="/techskill/java/const">基本構造</a>
+                    <p>内容</p>
+                    <ul>
+                        <li>クラス</li>
+                        <li>メソッド</li>
+                        <li>継承</li>
+                        <li>インターフェース</li>
+                        <li>コンストラクタ</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+{%endblock%}

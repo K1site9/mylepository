@@ -11,4 +11,7 @@ urlpatterns = [
     path('memo/git/', views.git, name='git'),
     path('humanskill/idea/', views.idea, name='idea'),
     path('memo/excel/', views.excel, name='excel'),
+    path('techskill/java/', views.java, name='java'),
+    path('techskill/java/base/', views.javabase, name='javabase'),
+    path('techskill/java/const/', views.javaconst, name='javaconst'),
 ]
