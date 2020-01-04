@@ -14,4 +14,6 @@ urlpatterns = [
     path('techskill/java/', views.java, name='java'),
     path('techskill/java/base/', views.javabase, name='javabase'),
     path('techskill/java/const/', views.javaconst, name='javaconst'),
+    path('techskill/java/access/', views.javaaccess, name='javaaccess'),
+    path('techskill/java/generic/', views.javageneric, name='javageneric'),
 ]

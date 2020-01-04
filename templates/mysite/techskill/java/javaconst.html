@@ -4,8 +4,9 @@
 
 {% block content %}
 {% load static %}
-    <div class="col-12p-2 mt-2 border rounded-lg" id="content">
+    <p class="col-12p-2 mt-2 border rounded-lg" id="content">
         <h1>javaクラス関係まとめ</h1>
+        <h3>継承とインターフェース</h3>
         <p>
             クラス関係の仕様についてまとめる。<br>
             継承とインターフェースを実装したクラスを例にとる。<br>
@@ -48,7 +49,7 @@
 <pre class="prettyprint linenums">
  //継承とインターフェース実装
  public class Dog extends Animal implements Breath{
-    //コンストラクタはなにもしなくても super() されるが、
+    //コンストラクタは暗黙的に super() されるが、
     //明示することで親の引数付きコンストラクタを指定できる。
     Dog(){
         super("Dog");
@@ -107,10 +108,130 @@
             <br>
             ⑦はAnimal型だがnewしたのはDogで、アップキャストされてもDogのcharacteristicになる。
             <br>
-            <br>
-            以上！
-            今回は継承周りをまとめてみた。<br>
-            ちなみに、抽象クラスというものもあるが、とインターフェースの違いは、多重継承ができるかどうからしい。
+        </p>
+        <br>
+        <h3>返り値とオーバーロード</h3>
+        <p>
+            返り値を返すメソッドは宣言に返す型を頭につけ、return句を必ず書く。<br>
+            オーバーロードは引数の数または型が違う、同じ名前のメソッドを作ること。
+<pre class="prettyprint linenums">
+ class Calc {
+    int sum(int a, int b) {
+        return a + b;
+    }
+    //オーバーロード
+    int sum(int a, int b, int c) {
+        return a + b + c;
+    }
+ }
+</pre>
+        </p>
+        <br>
+        <h3>抽象クラスとインターフェース</h3>
+        <p>
+            抽象クラスは子クラスと、is-a関係である。<br>
+            インターフェースは子クラスと、can-do関係である。
+        <table class="table-bordered">
+                <thead class=" table-secondary">
+                    <tr>
+                        <th  scope="col"></th>
+                        <th  scope="col">抽象クラス</th>
+                        <th  scope="col">インターフェース</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class=" table-secondary">アクセス修飾子</td>
+                        <td>public, protected</td>
+                        <td>public</td>
+                    </tr>
+                    <tr>
+                        <td class=" table-secondary">変数の定義</td>
+                        <td>インスタンス変数<br>
+                            ローカル変数<br>
+                            クラス変数
+                        </td>
+                        <td>public static finalのクラス変数</td>
+                    </tr>
+                    <tr>
+                        <td class=" table-secondary">継承</td>
+                        <td>多重継承不可</td>
+                        <td>多重継承可</td>
+                    </tr>
+                    <tr>
+                        <td class=" table-secondary">メソッド定義</td>
+                        <td>具体的なメソッド<br>
+                            抽象メソッドで子に実装を強制</td>
+                        <td>メソッドの型のみ<br>
+                            defaultメソッドには処理を書ける。<br>
+                            staticメソッドもかける。
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class=" table-secondary">コンストラクタ<br>イニシャライザ</td>
+                        <td>実装可</td>
+                        <td>実装不可</td>
+                    </tr>
+                </tbody>
+            </table>
+<pre class="prettyprint linenums">
+ abstract class Animal {
+    String name;
+
+    Animal(String name){
+        this.name = name;
+    }
+    //具体的な処理を書ける。
+    void sleep(){
+        System.out.println("sleeping!");
+    }
+    //abstractメソッドは子クラスに実装を強制
+    abstract void speak();
+ }
+
+ interface Animal2{
+    String name = null;
+
+    //defaultには処理を書ける
+    default void sleep(){
+        System.out.println("sleeping!");
+    }
+    //普通メソッドは子クラスに実装を強制
+    void speak();
+ }
+</pre>
+        <br>
+        <h3>enum型</h3>
+        <p>
+            クラスのように宣言できる列挙型。<br>
+            0か1かのようなものに名前をつけて管理したいとき役立つ。
+<pre class="prettyprint linenums">
+ //列挙型 プログラム上では一つのクラスとして扱われる
+ enum Output {
+    OK, NG,
+ }
+
+ public class Enum {
+
+    public static void main(String[] args) {
+        Output out;
+
+        out = Output.NG;
+
+        switch (out) {
+        case OK:
+            System.out.println("OK!");
+            System.out.println(out.ordinal()); // 0
+            break;
+        case NG:
+            System.out.println("NG!");
+            System.out.println(out.ordinal()); // 1
+            break;
+        }
+    }
+ }
+</pre>
+        以上!
         </p>
     </div>
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=java&skin=desert"></script>

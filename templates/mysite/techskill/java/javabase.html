@@ -25,6 +25,14 @@
  double d = 1111.111;    //小数点はdoubleになる
  char c = 'c';    //char型は''で
  str = "a\na\ta";    //\n:改行 \t:タブ
+
+ //参照型としてintを宣言する
+ Integer I = new Integer(32);
+ int n = I.intValue();
+
+ //宣言の仕方の名前
+ Integer I2 = 2;    // auto boxing
+ int i = 1;    // auto unboxing
 </pre>
             インスタンスフィールド変数は初期値を持つ。<br>
             ※ローカル変数は初期化しないとコンパイルエラー
@@ -188,15 +196,38 @@
 <pre class="prettyprint linenums">
  for (int i=0; i<5; i++){
      if (i < 2) {
-          continue;    //ループ終了
+          continue;    //次のループ
      } else {
-          break;    //次のループ
+          break;       //ループ終了
      }
  }
 </pre>
             for(①カウンター宣言; ②条件式; ③カウンタ変数の増減) と書く。<br>
             ①、②，③はそれぞれ省略ができる。 for(;;); も間違いではない。<br>
-            ※java8ではfor文は実は非推奨なのだそうな、、、
+            ※java8ではfor文は実は非推奨なのだそうな、、、<br>
+            ちなみに、labelを貼ると、その階層まで一気にbreakできる。
+<pre class="prettyprint linenums">
+ class Nest {
+    public static void main(String[] args) {
+        int num[][] = {
+                        {0, 1, 2},
+                        {3, 4, 5},
+                        {6, 7, 8}
+                      };
+        int i = 0;
+        label:
+        while(true) {
+            int j = 0;
+            while(j < 3) {
+                System.out.print(num[i][j]);
+                j++;
+                if(i == 1) break label;
+            }
+            i++;
+        }
+    }
+}
+</pre>
         </p>
         <br>
     </div>

@@ -29,3 +29,9 @@ def javabase(request):
 
 def javaconst(request):
     return render(request, 'mysite/techskill/java/javaconst.html', )
+
+def javaaccess(request):
+    return render(request, 'mysite/techskill/java/javaaccess.html', )
+
+def javageneric(request):
+    return render(request, 'mysite/techskill/java/javageneric.html', )

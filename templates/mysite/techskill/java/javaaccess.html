@@ -1,0 +1,124 @@
+{% extends 'mysite/header.html' %}
+
+{% block title %}javaアクセス修飾子とstatic{%endblock%}
+
+{% block content %}
+{% load static %}
+    <div class="col-12p-2 mt-2 border rounded-lg" id="content">
+        <h1>javaアクセス修飾子とstatic</h1>
+        <h3>アクセス修飾子</h3>
+        <p>
+            javaのアクセス修飾子は下記の4つ。
+        <table class="table-bordered">
+                <thead class=" table-secondary">
+                    <tr>
+                        <th  scope="col">アクセス修飾子</th>
+                        <th  scope="col">同一クラス</th>
+                        <th  scope="col">同一パッケージ</th>
+                        <th  scope="col">サブクラス</th>
+                        <th  scope="col">すべて</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class=" table-secondary">public</td>
+                        <td>〇</td>
+                        <td>〇</td>
+                        <td>〇</td>
+                        <td>〇</td>
+                    </tr>
+                    <tr>
+                        <td class=" table-secondary">protected</td>
+                        <td>〇</td>
+                        <td>〇</td>
+                        <td>〇</td>
+                        <td>ー</td>
+                    </tr>
+                    <tr>
+                        <td class=" table-secondary">デフォルト</td>
+                        <td>〇</td>
+                        <td>〇</td>
+                        <td>ー</td>
+                        <td>ー</td>
+                    </tr>
+                    <tr>
+                        <td class=" table-secondary">private</td>
+                        <td>〇</td>
+                        <td>ー</td>
+                        <td>ー</td>
+                        <td>ー</td>
+                    </tr>
+                </tbody>
+            </table>
+            これらを組み合わせることで データ隠蔽・カプセル化 ができる。<br>
+            データ隠蔽：メンバ(属性や操作)を公開と非公開に分けて、外部から属性への直接アクセスを避ける。<br>
+            カプセル化：オブジェクト内に属性とその属性にアクセスする操作を一つにまとめて持たせること。<br>
+        <br>
+        ・データ隠蔽・カプセル化の実装
+<pre class="prettyprint linenums">
+ public class Parser {
+
+    private String str = null;
+
+    public String getStr() {
+        return str;
+    }
+    private void setStr(String param) {
+        str = param;
+    }
+ }
+</pre>
+        上記のメンバ変数 str は、外部からのアクセスはデータ取得のみに限られる。<br>
+        このクラス内で値を定め、外部で参照する運用ができる。
+        </p>
+        <h3>static</h3>
+        <p>
+            変数やメソッドに static を付けることで、クラスフィールド、クラスメソッドの実装ができる。
+<pre class="prettyprint linenums">
+ class StaticClass {
+
+    //staticメンバ
+    static String staticStr;
+    static String getStaticStr(){
+        return staticStr;
+    }
+    //インスタンスメンバ
+    String instanceStr;
+    String getInstatnceStr() {
+        return instanceStr;
+    }
+
+    //staticイニシャライザ
+    static {
+        StaticClass.staticStr = "staticStr";
+    }
+    //インスタンスイニシャライザ
+    {
+        instanceStr = "instanceStr";
+    }
+ }
+
+ class Main {
+
+    public static void main(String[] args) {
+
+        //static参照
+        StaticClass.staticStr = StaticClass.staticStr + "Main";
+        System.out.println(StaticClass.getStaticStr());  //staticStrMain
+
+        //インスタンス参照
+        StaticClass stsCls = new StaticClass();
+        stsCls.instanceStr = stsCls.instanceStr + "Main";
+        System.out.println(stsCls.instanceStr);  //instanceStrMain
+    }
+ }
+</pre>
+        イニシャライザは変数の初期化ができる。<br>
+        ちなみに、イニシャライザはインスタンス生成の前、コンストラクタはインスタンス生成の後に実行される。<br>
+        静的要素(staticメンバ)はアプリケーションが停止するまで保持されるのに対し、<br>
+        インスタンスメンバはインスタンスが殺されるまでしか保持されない。
+        </p>
+    </div>
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=java&skin=desert"></script>
+{%endblock%}

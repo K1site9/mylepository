@@ -1,0 +1,88 @@
+{% extends 'mysite/header.html' %}
+
+{% block title %}java総称型まとめ{%endblock%}
+
+{% block content %}
+{% load static %}
+    <p class="col-12p-2 mt-2 border rounded-lg" id="content">
+        <h1>java総称型まとめ</h1>
+        <h3>総称型</h3>
+        <p>
+            使うまでなんの型が入るかわからないとき、総称型が使える。<br>
+            まずはクラスの総称型。
+<pre class="prettyprint linenums">
+//<T> 型を汎用化することでいろいろな型で使えるようになる
+// T は慣習(Type)。何でも構わない
+
+class GenericSample<T> {
+    private T value;
+
+    public void setValue(T val) {
+        value = val;
+    }
+
+    public T getValue() {
+        return value;
+    }
+}
+
+public class Generics {
+
+    public static void main(String[] args) {
+
+        GenericSample<Integer> i = new GenericSample<>();
+        i.setValue(10);
+        System.out.println(i.getValue());  //10
+
+        GenericSample<String> s = new GenericSample<>();
+        s.setValue("Hello");
+        System.out.println(s.getValue());  //Hello
+    }
+}
+</pre>
+            <br>
+            次にコンストラクタ、メソッドの総称型。
+<pre class="prettyprint linenums">
+class MethodConstractorSample {
+
+    // コンストラクタ前に仮型引数を置く
+    <T> MethodConstractorSample(T arg) {
+        System.out.println(arg);
+    }
+
+    // メソッド戻り値の前に仮型引数を置く
+    // （戻り値にTも使える）
+    public static <T> boolean genericSample(T arg) {
+        T t = arg;
+        if (t != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+</pre>
+        </p>
+        <br>
+        <h3>ワイルドカード</h3>
+        <p>
+            ワイルドカード： <?>
+            クラスやメソッドを使う際、実行するまで型が分からないとき使う。
+<pre class="prettyprint linenums">
+class WildCard {
+    //Listを返すのは決まっているが、何の型のリストか実行するまで分からない場合の例
+    public List<?> createList(boolean s) {
+        if (s) {
+            return new ArrayList<String>();
+        } else {
+            return new ArrayList<Integer>();
+        }
+    }
+}
+</pre>
+        </p>
+        <h5>以上！</h5>
+        <a href="http://www.ne.jp/asahi/hishidama/home/tech/java/generics.html#wildcard">参考：総称型（Generic type）</a>
+    </div>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=java&skin=desert"></script>
+{%endblock%}
