@@ -35,3 +35,9 @@ def javaaccess(request):
 
 def javageneric(request):
     return render(request, 'mysite/techskill/java/javageneric.html', )
+
+def javacollection(request):
+    return render(request, 'mysite/techskill/java/javacollection.html', )
+
+def javaexception(request):
+    return render(request, 'mysite/techskill/java/javaexception.html', )

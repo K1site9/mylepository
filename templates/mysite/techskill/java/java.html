@@ -3,13 +3,13 @@
 {% block title %}java備忘録{%endblock%}
 
 {% block content %}
-    <div class="col-12 p-2 mt-2 border rounded-lg" id="content">
-        <div class="card">
-            <div class="card-header">Javaまとめ</div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
+    <div class="row col-12 p-2 mt-2 border rounded-lg" id="content">
+        <div class="col-md-3">
+            <div class="card">
+                <h5 class="card-header">
                     <a href="/techskill/java/base">基本文法</a>
-                    <p>内容</p>
+                </h5>
+                <div class="card-body">
                     <ul>
                         <li>変数宣言</li>
                         <li>演算子</li>
@@ -18,10 +18,15 @@
                         <li>while</li>
                         <li>for</li>
                     </ul>
-                </li>
-                <li class="list-group-item">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <h5 class="card-header">
                     <a href="/techskill/java/const">基本構造</a>
-                    <p>内容</p>
+                </h5>
+                <div class="card-body">
                     <ul>
                         <li>クラス</li>
                         <li>メソッド</li>
@@ -31,10 +36,15 @@
                         <li>抽象クラス</li>
                         <li>enum型</li>
                     </ul>
-                </li>
-                <li class="list-group-item">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <h5 class="card-header">
                     <a href="/techskill/java/access">アクセス修飾子とstatic</a>
-                    <p>内容</p>
+                </h5>
+                <div class="card-body">
                     <ul>
                         <li>アクセス修飾子</li>
                         <li>データ隠蔽</li>
@@ -42,16 +52,49 @@
                         <li>static</li>
                         <li>イニシャライザ</li>
                     </ul>
-                </li>
-                <li class="list-group-item">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <h5 class="card-header">
                     <a href="/techskill/java/generic">総称型とワイルドカード</a>
-                    <p>内容</p>
+                </h5>
+                <div class="card-body">
                     <ul>
                         <li>総称型</li>
                         <li>ワイルドカード</li>
                     </ul>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
+        <div class="col-md-3">
+            <div class="card">
+                <h5 class="card-header">
+                    <a href="/techskill/java/collection">コレクションと拡張for文</a>
+                </h5>
+                <div class="card-body">
+                    <ul>
+                        <li>List</li>
+                        <li>Set</li>
+                        <li>Map</li>
+                        <li>forEach</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <h5 class="card-header">
+                    <a href="/techskill/java/exception">例外処理</a>
+                </h5>
+                <div class="card-body">
+                    <ul>
+                        <li>try catch finally</li>
+                        <li>throw throws</li>
+                        <li>独自例外</li>
+                    </ul>
+                </div>
+            </div>
     </div>
 {%endblock%}

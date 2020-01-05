@@ -1,0 +1,84 @@
+{% extends 'mysite/header.html' %}
+
+{% block title %}javaコレクションまとめ{%endblock%}
+
+{% block content %}
+{% load static %}
+    <div class="col-12 p-2 mt-2 border rounded-lg" id="content">
+        <h1>javaコレクションまとめ</h1>
+        <p>
+            コレクションは型を決めて、その型の値を連続して持つクラス。<br>
+            List、Map、Setがあり、それぞれ特徴がある。<br>
+            （クラスはこの3つの下にあり、List,Map,Setはインターフェース）
+        </p>
+        <h3>List</h3>
+        <p>
+            順番がある。<br>
+            ArrayListとLinkedListがある。<br>
+            ArrayList: 検索がはやい。<br>
+            LinkedList: 追加削除がはやい。
+<pre>
+List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+
+list.add(10);
+list.add(20);
+System.out.println(list.get(1));  //20
+</pre>
+        </p>
+        <h3>Set</h3>
+        <p>
+            値の重複を許さない。<br>
+            HashSetとTreeSet、LinkedHashSetがある。<br>
+            HashSet: 順番がない。<br>
+            TreeSet: 値順にソートされる。<br>
+            LinkedHashSet: 追加された順にソートされる。<br>
+<pre>
+Set&lt;Integer&gt; hashSet = new HashSet&lt;Integer&gt;();
+
+hashSet.add(10);
+hashSet.add(20);
+hashSet.add(10);
+System.out.println(hashSet.size());  //2
+</pre>
+        </p>
+        <h3>Map</h3>
+        <p>
+            keyと値を持つ。<br>
+            HashMapとTreeMap、LinedHashMapがある。<br>
+            HashMap: 順番なし。<br>
+            TreeMap: keyの順番にソート。<br>
+            LinedHashMap: 追加順にソート。
+<pre>
+Map &lt;String, Integer&gt; hashMap = new HashMap&lt;&gt;();
+
+hashMap.put("sato", 50);
+hashMap.put("ito", 60);
+
+System.out.println(hashMap.get("sato"));  //50
+</pre>
+        </p>
+        <h3>for each</h3>
+        <p>
+            for(中身の型 中身の変数名 : 配列及びコレクション)<br>
+            配列及びコレクションにすべての中身に処理を行うことができる。<br>
+            <br>
+            上のコレクションを使ってみるとこうなる。
+<pre>
+for (Integer data : list) {
+    System.out.println(data);  //10, 20
+}
+
+//Map.Entry&lt;K,V&gt;はMapの中身の型（インターフェース）
+//hashMap.entrySet()の戻り値の型はSet&lt;Map.Entry&lt;K,​V&gt;&gt;
+for (Map.Entry&lt;String, Integer&gt; score : hashMap.entrySet()) {
+    System.out.println(score.getKey() + " : " + score.getValue());
+    //ito : 60
+    //sato : 50
+}
+</pre>
+        </p>
+        <h5>以上！</h5>
+    </div>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=java&skin=desert"></script>
+<script src="{% static 'pre.js' %}"></script>
+{%endblock%}

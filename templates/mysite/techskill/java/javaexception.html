@@ -1,0 +1,73 @@
+{% extends 'mysite/header.html' %}
+
+{% block title %}java例外処理まとめ{%endblock%}
+
+{% block content %}
+{% load static %}
+    <div class="col-12 p-2 mt-2 border rounded-lg" id="content">
+        <h1>java例外処理まとめ</h1>
+        <p>
+            例外処理はExceptionを使う。<br>
+            例外を発生させ、catchし、加えて独自例外を発生させてみる。
+            <br>
+            ・ソース
+<pre class="prettyprint linenums">
+public class ExceptionSample {
+
+    public static void main(String[] args) {
+
+        try {
+
+            //ここでNumberFormatException発生
+            String s = "No.1";
+            System.out.println(Integer.parseInt(s));
+
+        } catch (ArithmeticException e) {
+
+            System.err.println("ArithmeticException: " + e.getMessage());
+
+        //NumberFormatExceptionはArithmeticExceptionのサブクラスではないので
+        //Exceptionにcatchされる
+        } catch (Exception e) {
+
+            //Messageを得るときはgetMessage
+            System.err.println("Exception: " + e.getMessage());
+
+        } finally {
+            try {
+                //MyExceptionをthrowsさせる
+                getErr();
+
+            //MyExceptionをcatch
+            }catch(MyException e){
+                System.err.println(e.getMessage());
+            }
+        }
+    }
+
+    //自分でcatchしないときは呼び出しもとにExceptionを返す。
+    static void getErr() throws MyException {
+        throw new MyException("MyException!");
+    }
+}
+
+//独自Exceptionの定義はextendsで
+//コンストラクタでメッセージを設定できる。
+class MyException extends Exception {
+    public MyException(String s) {
+        super(s);
+    }
+}
+</pre>
+        ・出力
+<pre class="bg-dark text-white">
+ Exception: For input string: "No.1"
+ MyException!
+</pre>
+
+        コメントで書いたことが大体のまとめ。<br>
+        try,catch,finally throws,throw 独自Exceptionをまとめた。
+        <h5>以上！</h5>
+    </div>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=java&skin=desert"></script>
+{%endblock%}
