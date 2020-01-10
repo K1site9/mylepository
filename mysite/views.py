@@ -44,3 +44,10 @@ def javaexception(request):
 
 def javaramuda(request):
     return render(request, 'mysite/techskill/java/javaramuda.html', )
+
+def javathread(request):
+    return render(request, 'mysite/techskill/java/javathread.html', )
+
+def javadate(request):
+    return render(request, 'mysite/techskill/java/javadate.html', )
+

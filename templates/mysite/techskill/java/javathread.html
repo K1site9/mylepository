@@ -1,17 +1,95 @@
 {% extends 'mysite/header.html' %}
 
-{% block title %}java総称型まとめ{%endblock%}
+{% block title %}javaThreadまとめ{%endblock%}
 
 {% block content %}
 {% load static %}
     <div class="col-12 p-2 mt-2 border rounded-lg" id="content">
-        <h1>java総称型まとめ</h1>
-        <h3>総称型</h3>
+        <h1>javaThreadまとめ</h1>
+        <h3>使用方法</h3>
         <p>
-
+            threadは同時に処理を走らせることができる（非同期処理）<br>
+            Threadクラスを継承してrunメソッドに処理を書くか、<br>
+            Runnableインターフェース型インスタンスをThreadのコンストラクタに渡すことで実装できる。<br>
 <pre class="prettyprint linenums">
+class MyThread extends Thread {
+    @Override
+    public void run() {
+        for (int i = 0; i < 300; i++) {
+            System.out.print('^');
+        }
+    }
+}
 
+class MyRunnable implements Runnable {
+    @Override
+    public void run() {
+        for (int i = 0; i < 300; i++) {
+            System.out.print('*');
+        }
+    }
+}
+
+public class Threads {
+
+    public static void main(String[] args) {
+
+        //生のThreadを使うパターン
+        MyThread mt = new MyThread();
+        mt.start();
+
+        // Runnableクラスのrunメソッドをオーバーライドするパターン
+        MyRunnable r = new MyRunnable();
+        Thread t = new Thread(r);
+        t.start();
+
+        // ラムダ記法でコンストラクタに直接Runnable型インスタンスを渡すパターン
+        new Thread(() -> {
+            for (int i = 0; i < 300; i++) {
+                System.out.print('=');
+            }
+        }).start();
+    }    //^^^^^^^^^*******^^^^^========...
+}
 </pre>
+        </p>
+        <br>
+        <h3>中断・遅延</h3>
+        <p>
+            sleep：式より下流が時間を決めて待つ。<br>
+            join：指定したスレッドの完了を、下流のスレッドが待つ。
+<pre class="prettyprint linenums">
+    public static void main(String[] args) throws Exception {
+
+        new Thread(() -> {
+            for (int i = 0; i < 300; i++) {
+                System.out.print('^');
+            }
+        }).start();
+
+        // 3秒停止
+        Thread.sleep(3000);
+
+        Thread t = new Thread(() -> {
+            for (int i = 0; i < 300; i++) {
+                System.out.print('=');
+            }
+        });
+        t.start();
+
+        // *を書き終えるまで待つ。
+        t.join();
+
+        new Thread(() -> {
+            for (int i = 0; i < 300; i++) {
+                System.out.print('*');
+            }
+        }).start();
+    }  //^^^...***...===...
+</pre>
+        </p>
+        <a href="https://qiita.com/kohii/items/d813ed91b719799fece8">その他分かりやすいquita:雑に理解するJavaのスレッド</a>
+        <br>
     </div>
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=java&skin=desert"></script>
 {%endblock%}

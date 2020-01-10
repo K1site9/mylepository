@@ -1,0 +1,58 @@
+{% extends 'mysite/header.html' %}
+
+{% block title %}javaDateまとめ{%endblock%}
+
+{% block content %}
+{% load static %}
+    <div class="col-12 p-2 mt-2 border rounded-lg" id="content">
+        <h1>javaDateまとめ</h1>
+        <p>
+            LocalDateTimeを使うといいらしい。<br>
+            DateクラスやCalendarクラスは古いもの。
+<pre class="prettyprint linenums">
+public static void main(String[] args) {
+
+    //LocalDateTimeの基礎
+    LocalDateTime d = LocalDateTime.now();
+    System.out.println(d.getYear());
+    System.out.println(d.getMonth());
+    System.out.println(d.getDayOfMonth());
+    System.out.println(d.getHour());
+    System.out.println(d.getMinute());
+    System.out.println(d.getSecond());
+    System.out.println(d.getNano());
+
+    //特定日時を指定
+    d = LocalDateTime.of(2015, 12, 15, 23, 30, 59);
+    System.out.println(d.plusDays(20));       //2016-01-04T23:30:59
+    System.out.println(d.minusDays(20));      //2015-11-25T23:30:59
+    System.out.println(d.withDayOfMonth(20)); //2015-12-20T23:30:59
+
+    //時刻の切り捨て
+    LocalDateTime.of(2015, 12, 15, 23, 30, 59).truncatedTo(ChronoUnit.HOURS); // 2015-12-15T23:00
+
+    //来月1日の12時
+    d =
+        LocalDateTime.now()
+        .plusMonths(1)
+        .withDayOfMonth(1)
+        .withHour(12)
+        .truncatedTo(ChronoUnit.HOURS);
+
+    //文字列へ変換
+    DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+    d = LocalDateTime.parse("2015/12/15 23:30:59", f);
+    System.out.println(d.format(f));    //2015/12/15 23:30:59
+    f = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    System.out.println(d.format(f));    //2015/12/15
+}
+</pre>
+        </p>
+        <h5>参考ページ</h5>
+        <a href="https://qiita.com/tag1216/items/91a471b33f383981bfaa">Java8の日時APIはとりあえずこれだけ覚えとけ</a><br>
+        <a href="https://qiita.com/tasogarei/items/df9e43ac36bde55aa928">JavaのDateFormatの小文字vs大文字</a>
+        <br>
+        <h5>以上！</h5>
+    </div>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=java&skin=desert"></script>
+{%endblock%}
