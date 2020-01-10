@@ -41,3 +41,6 @@ def javacollection(request):
 
 def javaexception(request):
     return render(request, 'mysite/techskill/java/javaexception.html', )
+
+def javaramuda(request):
+    return render(request, 'mysite/techskill/java/javaramuda.html', )

@@ -5,13 +5,144 @@
 {% block content %}
 {% load static %}
     <div class="col-12 p-2 mt-2 border rounded-lg" id="content">
-        <h1>java総称型まとめ</h1>
-        <h3>総称型</h3>
+        <h1>javaラムダ式まとめ</h1>
+        <h3>ラムダ式とは</h3>
         <p>
-
+            ラムダ式とは、インターフェースを実装したインスタンスを生成する式。<br>
+            ローカルクラスを省略した無名クラスを省略するとラムダ式になる。<br>
+        <br>
+        <h5>ローカルクラス</h5>
 <pre class="prettyprint linenums">
+public static void main(String[] args) {
 
+    // ローカルクラス:メソッド中でクラスを宣言
+    class Local implements Runnable {
+        public void run() {
+            System.out.println("Hello LocalClass!");
+        }
+    }
+    Runnable runner = new Local();
+    runner.run(); // Hello LocalClass!
+}
 </pre>
+        <h5>無名クラス</h5>
+<pre class="prettyprint linenums">
+public static void main(String[] args) {
+
+    // 無名クラス:インターフェースを実装したローカルクラス宣言を省略
+    // new Runnable(){}でRunnableインスタンスと見せかけた無名クラスインスタンス生成
+    Runnable runner2 = new Runnable() {
+        public void run() {
+            System.out.println("Hello NoNameClass!");
+        }
+    };
+    runner2.run(); // Hello NoNameClass!
+}
+</pre>
+        <h5>ラムダ式</h5>
+<pre class="prettyprint linenums">
+public static void main(String[] args) {
+
+    // ラムダ式:無名クラスを省略
+    // ()はrun()の引数
+    // ->{}はrunメソッドの実装内容
+    // 代入先の型でインターフェース型を推測
+    Runnable runner3 = () -> {
+        System.out.println("Hello Lambda!");
+    };
+    runner3.run(); // Hello Lambda!
+
+    // methodメソッドに無名クラスインスタンスを渡し、後で引数からRunnableとわかる
+    method(() -> {
+        System.out.println("Hello Lambda!");
+    });
+}
+
+public static void method(Runnable r) {
+    r.run();
+}
+</pre>
+            つまりラムダ式は、()->{} でメソッドを生成していると思えば大まかにあっている。<br>
+            詳しくいえば、{}の中身が実装内容かつ()の中身が引数のメソッドを持っている、<br>
+            なにかしらのインターフェース型の無名クラスインスタンスを作成するってこと。<br>
+            <br>
+            ()ではどのメソッドかわからないので、抽象メソッドが1つのインターフェースにだけ使える。<br>
+        </p>
+        <br>
+        <h3>関数型インターフェース</h3>
+        <p>
+            抽象メソッドが一つのインターフェース。ラムダ式にピッタリ。
+        <br>
+<pre class="prettyprint linenums">
+// Function&lt;引数の型T, 戻り値R&gt; インターフェース メソッドは R apply(T)
+Function&lt;Integer, String&gt; asterisker = (i) -&gt; {
+    System.out.println("Function");
+    return "*" + i;
+};
+String result = asterisker.apply(10);
+System.out.println(result); // *10
+// BiFunctionなら引数2つ
+
+// Consumer&lt;引数の型&gt; メソッドは void accept(T)
+Consumer&lt;String&gt; buyer = (goods) -&gt; {
+    System.out.println(goods + "を購入しました");
+};
+buyer.accept("おにぎり"); // おにぎりを購入しました。
+// BiConsumerなら引数2つ
+
+//Predicate&lt;引数の型&gt; メソッドは boolean test(T)
+Predicate&lt;String&gt; checker = (s) -&gt; {
+    return s.equals("Java");
+};
+boolean result2 = checker.test("Java");
+System.out.println(result2); // true
+</pre>
+        </p>
+        <h3>STREAMAPI</h3>
+        <p>
+            Collectionクラスに使える便利な関数型インターフェース群。
+        <br>
+<pre class="prettyprint linenums">
+List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+list.add(-1);
+list.add(0);
+list.add(1);
+list.add(3);
+list.add(2);
+
+
+    //Collection.stream()   戻り値:Stream
+list.stream()                                           //コレクションを元にstreamインスタンス生成
+    //filter(Predicate&lt;T&gt;)  戻り値:Stream
+    .filter((i) -&gt; { return i &gt; 0; })                   //条件に合わないものを除いたStreamを返す。
+    //sorted(Comparator&lt;T&gt;) 戻り値:Stream
+    .sorted((i1, i2) -&gt; { return i1 - i2; })            //引数1 - 引数2 で昇順 引数2 - 引数1 で降順
+    //map(Function&lt;T, R&gt;)   戻り値:Stream
+    .map((i) -&gt; { return "*" + i + "*"; })              //中端処理で、foreachを行う。
+    //forEach(Consumer&lt;T&gt;)  戻り値:void
+    .forEach((i) -&gt; { System.out.print(i + " "); });    //全ての要素にConsumerを適応する
+    //*1* *2* *3*
+</pre>
+        </p>
+        <h3>ラムダ式の省略</h3>
+        <p>
+            一定条件を満たすと、いろいろと省略ができる。
+        <br>
+<pre class="prettyprint linenums">
+//基本形
+Predicate<String> javaChecker = (String s) -> { return s.equals("Java"); };
+//引数一つのとき、型省略
+Predicate<String> javaChecker = (       s) -> { return s.equals("Java"); };
+//型省略したとき、()も省略
+Predicate<String> javaChecker =         s  -> { return s.equals("Java"); };
+//一行かつreturnがないとき、{}省略
+Consumer<String> buyer =         goods     ->   System.out.println(goods + "を購入しました");
+//returnも{}と同時省略
+Predicate<String> javaChecker =         s  ->          s.equals("Java");
+</pre>
+        </p>
+        <a href="https://qiita.com/sano1202/items/64593e8e981e8d6439d3#3-1-collectionssortlist-comparator-super-t">参考：Java8のラムダ式を理解する</a>
+        <h5>以上！</h5>
     </div>
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=java&skin=desert"></script>
 {%endblock%}
