@@ -1,11 +1,15 @@
 from django.shortcuts import render
-
+from . import models
+from django.views import View
+from django.utils import timezone
 # Create your views here.
-def index(request):
-    return render(request, 'mysite/header.html', )
-
-def home(request):
-    return render(request, 'mysite/home.html', )
+def search(request):
+    w = request.GET.get('word')
+    d = {
+        'word' : w,
+        'article_qs' : models.Article.objects.filter(title__contains=w).order_by('primaryNum')
+    }
+    return render(request, 'mysite/search.html', d)
 
 def test(request):
     return render(request, 'mysite/test.html', )
@@ -51,3 +55,18 @@ def javathread(request):
 def javadate(request):
     return render(request, 'mysite/techskill/java/javadate.html', )
 
+class homeView(View):
+    def get(self, request, *args, **kwargs):
+        d = {
+            'article_qs': models.Article.objects.all().order_by('updateTime')[:5]
+        }
+        return render(request, 'mysite/home.html', d)
+
+    def post(self, request, *args, **kwargs):
+        p = request.POST.get('input')
+        models.Question(text=p, updateTime=timezone.now()).save()
+        d = {
+            'article_qs': models.Article.objects.all().order_by('updateTime')[:5],
+            'input' : p
+        }
+        return render(request, 'mysite/home.html', d)

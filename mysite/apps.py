@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class HeaderConfig(AppConfig):
+class mysiteConfig(AppConfig):
     name = 'mysite'

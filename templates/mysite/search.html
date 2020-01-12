@@ -1,0 +1,32 @@
+{% extends 'mysite/header.html' %}
+
+{% block title %}検索{%endblock%}
+
+{% block content %}
+    <div class="p-2 rounded-lg">
+        <div class="card">
+            <div class="card-header bg-info font-weight-bold text-white">
+                {% if word %}
+                    [{{ word }}]の検索結果...
+                {% else %}
+                    最新投稿
+                {% endif %}
+            </div>
+            <ul class="list-group list-group-flush">
+                {% if article_qs %}
+                    {% for a in article_qs %}
+                        <li class="list-group-item">
+                            <a href="{{ a.url }}" >{{ a.title }}<br></a>
+                            <span class="text-muted">投稿日時： {{ a.updateTime }}</span>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li class="list-group-item">
+                        記事はありません。<br>
+                        (ヒットするのはタイトルの部分一致検索です。)
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+{%endblock%}
