@@ -3,8 +3,10 @@
 {% block title %}ホーム{%endblock%}
 
 {% block content %}
+{% load static %}
 <div class="row no-gutters">
-    <div class="col-12 col-md-4 p-2">
+    <img src="{% static 'img/justdoit.jpg' %}" class="img-fluid" alt="...">
+    <div class="col-12 col-md-3 p-2">
         <div class="card">
             <div class="card-header bg-info font-weight-bold text-white">最近の投稿</div>
                 <ul class="list-group list-group-flush">
@@ -23,29 +25,34 @@
                 </ul>
         </div>
     </div>
-    <div class="col-12 col-md-8 p-2 mt-2 border rounded-lg">
-        <h2>このサイトについて</h2>
-        <p>
-            このサイトは個人的な備忘録サイトです。<br>
-            備忘録・会社端末での個人的な調べものの利用のため作成しました。<br>
-            自分が見て分かるように記事は書いていますので、<br>
-            見づらいところがあるかもしれません。あしからず。<br>
-            <br>
-            内容についての意見・問い合わせはフッターのテキストエリアからお願いします。<br>
-        </p>
-        <h3>検索機能</h3>
-        <p>
-            サイト内の記事をあいまい検索できます。<br>
-            タイトルしかヒットしませんが。汗
-        </p>
-        <h3>運営者について</h3>
-        <p>
-            令和1年大卒。<br>
-            遺伝子組み換えで孔辺細胞の数を増やす研究をしていたが、<br>
-            産業の盛り上がりを鑑みて、SEの道を志す。<br>
-            フルスタック気味に業務システム開発をしている。<br>
-            農学・遺伝工学のバックボーンを活かせないか模索中。
-        </p>
+    <div class="col-12 col-md-9 p-2">
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th colspan="2" class="text-center">
+                        コンテンツ紹介
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="/humanskill/idea">人間力</a>
+                    </td>
+                    <td>
+                        個人的に人生で大事にしたいことをまとめています。
+                    </td>
+                <tr>
+                    <td>
+                        <a href="/techskill/java">java</a>
+                    </td>
+                    <td>
+                        javaについてまとめています。
+                    </td>
+                </tr>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 {%endblock%}

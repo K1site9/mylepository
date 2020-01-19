@@ -5,7 +5,8 @@ from . import views
 app_name = 'mysite'
 urlpatterns = [
     path('', views.homeView.as_view(), name='home'),
-    path('search', views.search, name='search'),
+    path('mysite/', views.mysiteView.as_view(), name='mysite'),
+    path('search/', views.search, name='search'),
     path('test/', views.test, name='test'),
     path('test2/', views.test2, name='test2'),
     path('memo/git/', views.git, name='git'),

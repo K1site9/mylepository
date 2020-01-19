@@ -86,35 +86,39 @@
             </form>
         </div>
     </nav>
+    {% if input %}
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>ご意見・お問い合わせありがとうございます！</strong>
+        </div>
+    {% endif %}
+
 </header>
 {% block content %}
 {% endblock %}
-<footer class="mt-4 bg-dark text-white">
-    <div class="row align-items-center ">
-<!--        <div class="col-6">-->
-<!--            <a class="text-white ml-2" href="/">ホーム</a>-->
-<!--        </div>-->
-        <div class="col">
-            {% if input %}
-<!--                <div class="alert alert-info alert-dismissible" role="alert">-->
-<!--                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-<!--                    <strong>ご意見・お問い合わせありがとうございます！</strong>-->
-<!--                </div>-->
-                <script>
-                    alert('ご意見・お問い合わせありがとうございます！');
-                </script>
-            {% endif %}
-            <form class="form-inline my-2 my-lg-0" action="/" method="post">
+<footer class="mt-4 bg-dark text-light">
+    <div class="row ">
+        <div class="col-12 col-md d-flex justify-content-center align-items-center">
+            <div>
+            <div class="row">
+            <a class="text-light" href="/">・ホーム</a>
+            </div>
+            <div class="row">
+            <a class="text-light" href="/mysite/">・このサイトについて</a>
+            </div>
+            </div>
+        </div>
+        <div class="col-12 col-md d-flex justify-content-center p-2">
+            <form class="text-center my-2 my-lg-0" action="/" method="post">
                 {% csrf_token %}
+                <input type="hidden" name="url" value="{{ request.path }}">
                 <div>
                     <textarea class="rounded-lg m-2" rows="5" cols="50" placeholder="問い合わせはこちら。返答が必要な場合はメールアドレスをご記入ください。" aria-label="問い合わせ" name="input" maxlength="255"></textarea>
                 </div>
                 <div>
                     <button type="submit" class="btn btn-outline-success my-2 my-sm-0">問い合わせを送信</button>
-                    <p>※ホームへ戻ります。</p>
                 </div>
             </form>
-
         </div>
     </div>
 </footer>

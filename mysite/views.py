@@ -58,15 +58,25 @@ def javadate(request):
 class homeView(View):
     def get(self, request, *args, **kwargs):
         d = {
-            'article_qs': models.Article.objects.all().order_by('updateTime')[:5]
+            'article_qs': models.Article.objects.all().order_by('-updateTime')[:5]
         }
         return render(request, 'mysite/home.html', d)
 
     def post(self, request, *args, **kwargs):
         p = request.POST.get('input')
-        models.Question(text=p, updateTime=timezone.now()).save()
+        url = request.POST.get('url')
+        if p is None:
+            models.Question(text=p, updateTime=timezone.now()).save()
         d = {
-            'article_qs': models.Article.objects.all().order_by('updateTime')[:5],
+            'article_qs': models.Article.objects.all().order_by('-updateTime')[:5],
             'input' : p
         }
+
         return render(request, 'mysite/home.html', d)
+
+class mysiteView(View):
+    def get(self, request, *args, **kwargs):
+        d = {
+            'article_qs': models.Article.objects.all().order_by('-updateTime')[:5]
+        }
+        return render(request, 'mysite/mysite.html', d)

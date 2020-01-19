@@ -1,0 +1,54 @@
+{% extends 'mysite/header.html' %}
+
+{% block title %}ホーム{%endblock%}
+
+{% block content %}
+{% load static %}
+<div class="row no-gutters">
+    <img src="{% static 'img/justdoit.jpg' %}" class="img-fluid" alt="...">
+    <div class="col-12 col-md-3 p-2">
+        <div class="card">
+            <div class="card-header bg-info font-weight-bold text-white">最近の投稿</div>
+            <ul class="list-group list-group-flush">
+                {% if article_qs %}
+                    {% for a in article_qs %}
+                        <li class="list-group-item">
+                            <a href="{{ a.url }}" >{{ a.title }}<br></a>
+                            <span class="text-muted">投稿日時： {{ a.updateTime }}</span>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li class="list-group-item">
+                        記事はありません。
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-12 col-md-9 p-2 mt-2 border rounded-lg">
+        <h2>このサイトについて</h2>
+        <p>
+            2020/01~<br>
+            このサイトは個人的な備忘録サイトです。<br>
+            備忘録を残すため・サイト作成の練習のため作成しました。<br>
+            自分が見て分かるように記事は書いていますので、<br>
+            見づらいところがあるかもしれません。あしからず。<br>
+            <br>
+            内容についての意見・問い合わせはフッターのテキストエリアからお願いします。<br>
+        </p>
+        <h3>検索機能</h3>
+        <p>
+            サイト内の記事をあいまい検索できます。<br>
+            タイトルしかヒットしませんが。汗
+        </p>
+        <h3>運営者について</h3>
+        <p>
+            令和1年大卒。<br>
+            遺伝子組み換えで孔辺細胞の数を増やす研究をしていたが、<br>
+            産業の盛り上がりを鑑みて、SEの道を志す。<br>
+            上から下までやる業務システム開発をしている。<br>
+            農学・遺伝工学のバックボーンを活かせないか模索中。
+        </p>
+    </div>
+</div>
+{%endblock%}
