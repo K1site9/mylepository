@@ -4,12 +4,12 @@
 
 {% block content %}
 {% load static %}
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+<div id="carouselControls" class="carousel slide carousel-fade" data-ride="carousel">
       <!-- インジケータの設定 -->
   <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselIndicators" data-slide-to="2"></li>
   </ol>
   <!-- スライドさせる画像の設定 -->
   <div class="carousel-inner">
@@ -24,11 +24,11 @@
     </div><!-- /.carousel-item -->
   </div><!-- /.carousel-inner -->
   <!-- スライドコントロールの設定 -->
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+  <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">前へ</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+  <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">次へ</span>
   </a>
@@ -37,7 +37,7 @@
 <!--    <img src="{% static 'img/notebook.jpg' %}" class="img-fluid" alt="...">-->
     <div class="col-12 col-md-3 p-2">
         <div class="card">
-            <div class="card-header bg-info font-weight-bold text-white">最近の投稿</div>
+            <div class="card-header bg-info font-weight-bold text-white text-center">最近の投稿</div>
                 <ul class="list-group list-group-flush">
                     {% if article_qs %}
                         {% for a in article_qs %}
