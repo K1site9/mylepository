@@ -1,0 +1,2048 @@
+{% extends 'mysite/header.html' %}
+
+{% block title %}基本情報辞書{%endblock%}
+
+{% block content %}
+    <div class="col-12 p-2 mt-2 border rounded-lg" id="content">
+        <h1 class="mt-2">
+            基本情報メモ
+        </h1>
+        <div class="card">
+            <div class="card-header" role="tab" id="hardwareheader">
+                <h5 class="mb-0">
+                    <a href="#hardware" class="collapsed text-body" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="hardware">
+                        ハードウェア
+                    </a>
+                </h5>
+            </div><!-- /.card-header -->
+            <div class="collapse" role="tabpanel" id="hardware" aria-labelledby="hardware" aria-expanded="false">
+                <table class="table-striped table-bordered">
+                    <tr>
+                        <td rowspan="4">ハードウェアの種類</td>
+                        <td>・入力装置：キーボード、タッチパネル</td>
+                    </tr>
+                    <tr>
+                        <td>・出力装置：ディスプレイ、プリンタ</td>
+                    </tr>
+                    <tr>
+                        <td>・記憶装置：メモリ、ハードディスク</td>
+                    </tr>
+                    <tr>
+                        <td>・制御装置 and 演算装置：CPU</td>
+                    </tr>
+                    <tr>
+                        <td>解像度</td>
+                        <td>特定の範囲に表せる画素数（画素はピクセルのこと、ドットとも）</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">インタフェース</td>
+                        <td>・シリアルインタフェース：一本の信号線。USB、IEEE1394、シリアルATA</td>
+                    </tr>
+                    <tr>
+                        <td>・パラレルインタフェース：複数の信号線を利用。</td>
+                    </tr>
+                    <tr>
+                        <td>・ワイヤレスインターフェース：Bluetooth|2.4GHz帯の電波を利用。IrDA|赤外線通信。</td>
+                    </tr>
+                    <tr>
+                        <td>主記憶</td>
+                        <td>メモリのこと。RAM（半導体）でできている。</td>
+                    </tr>
+                    <tr>
+                        <td>DRAM</td>
+                        <td>コンデンサ。主記憶に使う。SDRAMはDRAMの進化系。リフレッシュ（電荷の補充しないとデータ消える）</td>
+                    </tr>
+                    <tr>
+                        <td>SRAM</td>
+                        <td>フリップフロップ。キャッシュメモリに使う。</td>
+                    </tr>
+                    <tr>
+                        <td>キャッシュメモリ</td>
+                        <td>CPUと主記憶の間に立って、データを保持することで何回も引き出さずにすむ。</td>
+                    </tr>
+                    <tr>
+                        <td>実効アクセス時間</td>
+                        <td>キャッシュメモリアクセス時間ｔ　×主記憶アクセス時間（1-ｔ）</td>
+                    </tr>
+                    <tr>
+                        <td>ライトスルー方式</td>
+                        <td>キャッシュメモリと主記憶の両方に同じ内容を書き込む。</td>
+                    </tr>
+                    <tr>
+                        <td>ライトバック方式</td>
+                        <td>普段はキャッシュメモリに書き込み、データがあふれるとき主記憶に書き込み。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">補助記憶</td>
+                        <td>電源が入っていなくてもデータが消えない。データ転送が遅い。</td>
+                    </tr>
+                    <tr>
+                        <td>・磁気ディスク：ハードディスクのこと</td>
+                    </tr>
+                    <tr>
+                        <td>・光ディスク：CD、DVD、ブルーレイ</td>
+                    </tr>
+                    <tr>
+                        <td>・フラッシュメモリ：SDカード、USBメモリ、SSD</td>
+                    </tr>
+                    <tr>
+                        <td>磁気ディスクの書き込み</td>
+                        <td>シリンダ＞トラック＞セクタ　の3つの領域がある。小さいデータを書き込むと、余った領域の分無駄になる。アームで書き込む。</td>
+                    </tr>
+                    <tr>
+                        <td>磁気ディスクのアクセス時間</td>
+                        <td>アーム移動時間（トラック）＋ディスク回転時間（セクタ）＋書き込み時間</td>
+                    </tr>
+                    <tr>
+                        <td>フラッシュメモリ</td>
+                        <td>電気で読み書きをする。読み書きに回数制限があるが、高速。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">CPUの性能指標</td>
+                        <td>クロック周波数：1秒間に刻むクロック(PCの体内時計)数。</td>
+                    </tr>
+                    <tr>
+                        <td>MIPS：一秒間に実行できる命令数(Million Instructions Per Second)</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">レジスタ</td>
+                        <td>プログラムをCPUが実行するとき、データを一時的に保存する場所。</td>
+                    </tr>
+                    <tr>
+                        <td>・プログラムカウンタ：次実行する命令のアドレスを記憶</td>
+                    </tr>
+                    <tr>
+                        <td>・命令レジスタ：主記憶から読みだされた命令を記憶</td>
+                    </tr>
+                    <tr>
+                        <td>・アキュムレータ：演算の対象データ、演算結果を記憶</td>
+                    </tr>
+                    <tr>
+                        <td>・汎用レジスタ：いろいろ</td>
+                    </tr>
+                    <tr>
+                        <td>オペランド</td>
+                        <td>１＋２でいうところの１と２のデータを保存する場所。</td>
+                    </tr>
+                    <tr>
+                        <td>実効アドレス計算</td>
+                        <td>オペランドの保存場所を計算すること。プログラムは命令部とアドレス部からなり、アドレス部から実効アドレス計算する</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">命令実行サイクル</td>
+                        <td>①命令フェッチ（命令レジスタに命令保存）</td>
+                    </tr>
+                    <tr>
+                        <td>②命令解読（デコード）</td>
+                    </tr>
+                    <tr>
+                        <td>③実効アドレス計算</td>
+                    </tr>
+                    <tr>
+                        <td>④オペランド呼び出し</td>
+                    </tr>
+                    <tr>
+                        <td>⑤命令の実行</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">アドレス指定方式</td>
+                        <td>命令のアドレス部の成り立ちの種類</td>
+                    </tr>
+                    <tr>
+                        <td>・即値：アドレス部に直接入っている</td>
+                    </tr>
+                    <tr>
+                        <td>・直接：アドレス部にアドレス番地が入っている</td>
+                    </tr>
+                    <tr>
+                        <td>・間接：アドレス部に対象データのアドレス番地が入っているアドレス番地が入っている</td>
+                    </tr>
+                    <tr>
+                        <td>・指標：指標レジスタ番号とアドレス定数をアドレス部に持ち、指標レジスタ番号の示す先のデータと定数を足すとアドレス番地になる</td>
+                    </tr>
+                    <tr>
+                        <td>パイプライン処理</td>
+                        <td>命令をステージに分割し、ずらしながら同時実行。スーパパイプラインはその細分化版</td>
+                    </tr>
+                    <tr>
+                        <td>スーパスカラ</td>
+                        <td>複数のパイプラインを使って同時命令実行</td>
+                    </tr>
+                    <tr>
+                        <td>マルチコアプロセッサ</td>
+                        <td>CPUに処理を行うコアを複数用意。へいれつだからつよい。</td>
+                    </tr>
+                    <tr>
+                        <td>CPUの投機実行</td>
+                        <td>分岐命令が決まる前に、予測した命令の実行を開始</td>
+                    </tr>
+                </table>
+            </div><!-- /.collapse -->
+        </div><!-- /.card -->
+        <div class="card">
+            <div class="card-header" role="tab" id="softwareheader">
+                <h5 class="mb-0">
+                    <a href="#software" class="collapsed text-body" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="software">
+                        ソフトウェア
+                    </a>
+                </h5>
+            </div><!-- /.card-header -->
+            <div class="collapse" role="tabpanel" id="software" aria-labelledby="software" aria-expanded="false">
+                <table class="table-striped table-bordered">
+                    <tr>
+                        <td rowspan="3">OS</td>
+                        <td>・ハードウェアを管理する</td>
+                    </tr>
+                    <tr>
+                        <td>・ファイルを管理する</td>
+                    </tr>
+                    <tr>
+                        <td>・周辺機器を管理する</td>
+                    </tr>
+                    <tr>
+                        <td>タスク</td>
+                        <td>PCから見た仕事単位（プロセスとも）。人から見るとジョブ(＞タスク)</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">タスクの状態遷移</td>
+                        <td>・実行状態：CPU使ってるとき</td>
+                    </tr>
+                    <tr>
+                        <td>・実行可能状態：CPUが使えるようになるのを待っている状態</td>
+                    </tr>
+                    <tr>
+                        <td>・待ち状態：要求した出入力が終わるのを待っている状態</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">スケジューリング方式</td>
+                        <td>・優先度方式：その名の通り。</td>
+                    </tr>
+                    <tr>
+                        <td>・タイムスライス方式：CPU利用時間を切り分け次々実行</td>
+                    </tr>
+                    <tr>
+                        <td>・到着順方式：その名の通り。</td>
+                    </tr>
+                    <tr>
+                        <td>到着順以外はOSが管理する。そのことをプリエンプティブ方式という。（⇔ノンプリエンプティブ）</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">内部割り込み</td>
+                        <td>・プログラム割り込み：エラーのこと</td>
+                    </tr>
+                    <tr>
+                        <td>・SVC割り込み：出入力するときなど SuperVisor Callが呼び出されるとき</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">外部割り込み</td>
+                        <td>・マシンチェック割り込み：ハードウェアの問題</td>
+                    </tr>
+                    <tr>
+                        <td>・出入力割り込み：出入力が終了したときの割り込み</td>
+                    </tr>
+                    <tr>
+                        <td>・タイマ割り込み：CPUに割り当てられた時間が超えたとき</td>
+                    </tr>
+                    <tr>
+                        <td>スプーリング</td>
+                        <td>タスクをため込んで遅い出入力機器を待たなくてもいいようにすること（記憶域＝バッファ）</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">実記憶管理</td>
+                        <td>・固定長方式：プログラムを固定長で保存し、速いが効率悪い</td>
+                    </tr>
+                    <tr>
+                        <td>・可変長方式：固定長の逆。</td>
+                    </tr>
+                    <tr>
+                        <td>・スワッピング方式：優先度の高いプログラムを主記憶に配置し、逆を補助記憶に置く。インアウトする。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">仮想記憶管理</td>
+                        <td>ページング方式：主記憶と補助記憶を決まった大きさの区画に分割し、動的に割り当てる。</td>
+                    </tr>
+                    <tr>
+                        <td>主記憶に持ってくるのがページイン、補助記憶に追い出すのがページアウト、必要なページがないのがページフォールト</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">ページ置き換えアルゴ</td>
+                        <td>・FIFO：先入れ先出し First In First Out</td>
+                    </tr>
+                    <tr>
+                        <td>・LRU：最近使ってないの先出し Least Recently Used</td>
+                    </tr>
+                    <tr>
+                        <td>・LFU：あんま使わないの先出し LEast Frequently Used</td>
+                    </tr>
+                    <tr>
+                        <td>メモリリーク</td>
+                        <td>確保した記憶領域が解放されないこと。</td>
+                    </tr>
+                    <tr>
+                        <td>スラッシング</td>
+                        <td>莫大なメモリ確保命令によってページングが大量に発生し性能が低下すること</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">パス</td>
+                        <td>/ or \ ディレクトリの区切り、パスの先頭でルートディレクトリ</td>
+                    </tr>
+                    <tr>
+                        <td>.. 一つ上に移動</td>
+                    </tr>
+                    <tr>
+                        <td>. カレントディレクトリ </td>
+                    </tr>
+                    <tr>
+                        <td>例) .\..\..\a　で二つ上の階層のaフォルダを指す(正確には上がって上がって下がるから一つ上みたいなもの)</td>
+                    </tr>
+                </table>
+            </div><!-- /.collapse -->
+        </div><!-- /.card -->
+        <div class="card">
+            <div class="card-header" role="tab" id="innerdataheader">
+                <h5 class="mb-0">
+                    <a href="#innerdata" class="collapsed text-body" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="innerdata">
+                        内部データ
+                    </a>
+                </h5>
+            </div><!-- /.card-header -->
+            <div class="collapse" role="tabpanel" id="innerdata" aria-labelledby="innerdata" aria-expanded="false">
+                <table class="table-striped table-bordered">
+                    <tr>
+                        <td>負数の表現</td>
+                        <td>1ビットを0=正、1=負として表している。-5=10000101</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">補数表現</td>
+                        <td>2の補数というのがPC内では使われている。-5 = 00000101(5)→11111010(反転)→11111011</td>
+                    </tr>
+                    <tr>
+                        <td>これを使うと足し算で引き算を表現できる。</td>
+                    </tr>
+                    <tr>
+                        <td>シフト演算</td>
+                        <td>掛け算割り算は桁をずらすことで演算している。×7 なら2^2 + 2 + 1 で、2の倍数項は桁をずらして、1は足し算</td>
+                    </tr>
+                    <tr>
+                        <td>浮動小数点表示</td>
+                        <td>0.9 × 10 ^ x のこと。 ビットを節約できる。 可数部と基数部、指数部に分かれ、0.xで可数部を表すことを正規化という。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">誤差</td>
+                        <td>・丸め誤差：四捨五入や切り捨てのこと。</td>
+                    </tr>
+                    <tr>
+                        <td>・打ち切り誤差：計算を打ち切る（円周率とか）</td>
+                    </tr>
+                    <tr>
+                        <td>・情報落ち：絶対値の違いすぎる数字の演算で小さいほうが無視されること</td>
+                    </tr>
+                    <tr>
+                        <td>・桁落ち：1.234-1.230 = 0.004　の有効桁が減ること</td>
+                    </tr>
+                    <tr>
+                        <td>・桁あふれ：計算結果の桁数が大きすぎるとき</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">論理演算</td>
+                        <td>AND OR NOT ：そのまま</td>
+                    </tr>
+                    <tr>
+                        <td>XOR：互いに異なるとき真</td>
+                    </tr>
+                    <tr>
+                        <td>NOR：どちらかが真のとき偽</td>
+                    </tr>
+                    <tr>
+                        <td>NAND:どちらも真で偽</td>
+                    </tr>
+                    <tr>
+                        <td>半加算器</td>
+                        <td>二桁の足し算をする。 1桁目はXORで2桁目はAND。1 + 1 ならXORは0 でANDは1だから10になる。</td>
+                    </tr>
+                    <tr>
+                        <td>全加算器</td>
+                        <td>桁上がりを考慮する2桁の足し算。最下位以外の桁でつかう。</td>
+                    </tr>
+                </table>
+            </div><!-- /.collapse -->
+        </div><!-- /.card -->
+        <div class="card">
+            <div class="card-header" role="tab" id="constractheader">
+                <h5 class="mb-0">
+                    <a href="#constract" class="collapsed text-body" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="constract">
+                        システム構成
+                    </a>
+                </h5>
+            </div><!-- /.card-header -->
+            <div class="collapse" role="tabpanel" id="constract" aria-labelledby="constract" aria-expanded="false">
+                <table class="table-striped table-bordered">
+                    <tr>
+                        <td>システムの構成</td>
+                        <td>集中処理と分散処理：サーバが1個か複数か。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">処理タイミング</td>
+                        <td>リアルタイム処理：データきたらすぐやっちゃう（ハードリアルタイムはエアバックとか。ソフトリアルタイムは座席予約とか）</td>
+                    </tr>
+                    <tr>
+                        <td>バッチ処理：まとまったデータを処理する</td>
+                    </tr>
+                    <tr>
+                        <td>三層クライアントサーバシステム</td>
+                        <td>クライアント・APサーバ・DBサーバの構成のこと。（昔はクライアントにアプリが必要だったんだ、、、）</td>
+                    </tr>
+                    <tr>
+                        <td>ストアドプロシージャ</td>
+                        <td>DBにSQL持たせる。通信負荷軽減。貯蔵された手続き</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">デュプレックスシステム</td>
+                        <td>2つのシステムで同じ処理をする。（片方は予備）</td>
+                    </tr>
+                    <tr>
+                        <td>・ホットスタンバイ方式：常に起動</td>
+                    </tr>
+                    <tr>
+                        <td>・ウォームスタンバイ方式：OSだけ起動</td>
+                    </tr>
+                    <tr>
+                        <td>・コールドスタンバイ：寝てる。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">負荷分散</td>
+                        <td>マルチプロセッサ：複数のCPUを用意。(主記憶を共有するかしないかで密結合か疎結合か分かれる)</td>
+                    </tr>
+                    <tr>
+                        <td>クラスタリング：複数のPCを用意。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">信頼性設計</td>
+                        <td>フォールトアボイダンス：障害を回避。</td>
+                    </tr>
+                    <tr>
+                        <td>フォールトトレラント：障害を耐える。(予備機や機能制限)</td>
+                    </tr>
+                    <tr>
+                        <td>・フェールセーフ：故障したら停止</td>
+                    </tr>
+                    <tr>
+                        <td>・フェールソフト：故障した箇所を隔離、他稼働</td>
+                    </tr>
+                    <tr>
+                        <td>・フェールプルーフ：誤操作でも壊れないようにしておく(電子レンジはドア開けたまま加熱できない)</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">RAID</td>
+                        <td>磁気ディスクのフォールトトレラント</td>
+                    </tr>
+                    <tr>
+                        <td>・RAID0：ストライピング。複数のディスクに分けて書き込む。速いだけ。</td>
+                    </tr>
+                    <tr>
+                        <td>・RAID1：ミラーリング。複数のディスクに書き込む。コピー。（複数のRAIDコントローラをつかうことをデュプレキシングという）</td>
+                    </tr>
+                    <tr>
+                        <td>・RAID5：ブロック単位にバラバラに複数のディスクに書き込む。速い。復元できる。余計な容量かかる（パリティ）。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">システムの性能評価</td>
+                        <td>ターンアラウンドタイム：要求から出力までの時間</td>
+                    </tr>
+                    <tr>
+                        <td>レスポンスタイム：入力の完了から出力の開始まで</td>
+                    </tr>
+                    <tr>
+                        <td>スループット：単位時間当たりの仕事量</td>
+                    </tr>
+                    <tr>
+                        <td>ベンチマークテスト：標準的な他のシステムと比べる</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">信頼性の基準（RASIS）</td>
+                        <td>信頼性(Relibility)：故障しない</td>
+                    </tr>
+                    <tr>
+                        <td>可用性(Availability)：稼働率高い</td>
+                    </tr>
+                    <tr>
+                        <td>保守性(Serviceability)：復旧速い</td>
+                    </tr>
+                    <tr>
+                        <td>完全性(Integrity)：データの整合性</td>
+                    </tr>
+                    <tr>
+                        <td>機密性(Security)：不正アクセスされない</td>
+                    </tr>
+                    <tr>
+                        <td>MTBF</td>
+                        <td>Mean Time Between Failures 信頼性の指標</td>
+                    </tr>
+                    <tr>
+                        <td>MTTR</td>
+                        <td>Mean Time To Repair 保守性の指標</td>
+                    </tr>
+                    <tr>
+                        <td>稼働率</td>
+                        <td>可用性の指標 MTBF / (MTBF + MTTR)</td>
+                    </tr>
+                    <tr>
+                        <td>バスタブ曲線</td>
+                        <td>ハードやソフトの故障発生率と時間の関係は最初と最後が多い</td>
+                    </tr>
+                </table>
+            </div><!-- /.collapse -->
+        </div><!-- /.card -->
+        <div class="card">
+            <div class="card-header" role="tab" id="devheader">
+                <h5 class="mb-0">
+                    <a href="#dev" class="collapsed text-body" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="dev">
+                        システム開発
+                    </a>
+                </h5>
+            </div><!-- /.card-header -->
+            <div class="collapse" role="tabpanel" id="dev" aria-labelledby="dev" aria-expanded="false">
+                <table class="table-striped table-bordered">
+                    <tr>
+                        <td rowspan="2">要件定義</td>
+                        <td>・機能要件：機能に関する要件</td>
+                    </tr>
+                    <tr>
+                        <td>・非機能要件：品質要件、技術要件、運用要件</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">外部設計</td>
+                        <td>レイアウトを決める。</td>
+                    </tr>
+                    <tr>
+                        <td>GUI：Graphical User Interface：マウスかタッチパネルで操作。CUI(コンソール)でないもの。</td>
+                    </tr>
+                    <tr>
+                        <td>内部設計</td>
+                        <td>ソフトウェアの構造を決定し、プログラム単位に分解する。</td>
+                    </tr>
+                    <tr>
+                        <td>詳細設計</td>
+                        <td>プログラムの構造を設計し、モジュール単位に分解する。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">システム開発手法</td>
+                        <td>・ウォーターフォールモデル：要件定義からテストまで順に進める。</td>
+                    </tr>
+                    <tr>
+                        <td>・プロトタイピングモデル：試作品を作成して、レビューしながら進める。</td>
+                    </tr>
+                    <tr>
+                        <td>・スパイラルモデル：大規模なシステムはサブシステムに分解して、一手順ずつ均等にプロトタイピングしていく。</td>
+                    </tr>
+                    <tr>
+                        <td>・アジャイル開発：スパイラルの派生。短期間に開発サイクルを繰り返しながら機能単位で完成させていく。</td>
+                    </tr>
+                    <tr>
+                        <td>DFD</td>
+                        <td>Data Flow Diagram：データの流れに着目して対象業務を分析する。</td>
+                    </tr>
+                    <tr>
+                        <td>E-R図</td>
+                        <td>Entity-Relation：実体の関係でデータの関連分析する。組織→人　は1対多を表す。</td>
+                    </tr>
+                    <tr>
+                        <td>状態遷移図</td>
+                        <td>状態の移り変わりを矢印で表す（エンティティは同じもの）。業務の状態変化や画面遷移。リアルタイムシステムで使う。</td>
+                    </tr>
+                    <tr>
+                        <td>モジュール強度</td>
+                        <td>1つのモジュール内の関連の強さ。強いと独立。参照される側関数は基本強い。</td>
+                    </tr>
+                    <tr>
+                        <td>モジュール結合度</td>
+                        <td>モジュール間の関係の強さ：弱いと独立。参照する側関数は強い。</td>
+                    </tr>
+                    <tr>
+                        <td>低水準言語</td>
+                        <td>機械語、アセンブラ言語。機械が理解しやすい</td>
+                    </tr>
+                    <tr>
+                        <td>高水準言語</td>
+                        <td>COBOL、C、Java。人が理解しやすい</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">言語プロセッサ</td>
+                        <td>人間が書いたプログラム（原始プログラム）を機械語（目的プログラム）に変換する。</td>
+                    </tr>
+                    <tr>
+                        <td>・アセンブラ：アセンブラ言語を翻訳、アセンブルする。</td>
+                    </tr>
+                    <tr>
+                        <td>・コンパイラ：一括翻訳、コンパイルする。java、C#、C</td>
+                    </tr>
+                    <tr>
+                        <td>・インタープリタ：一行ずつ翻訳、遅い。python、javascript</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">ソフトウェア実行までの手順</td>
+                        <td>①コンパイル：コンパイラがコンパイルすると同時に処理効率の最適化をする。</td>
+                    </tr>
+                    <tr>
+                        <td>②リンク：コンパイルされた目的プログラムにほかのライブラリを付け加え、実行可能なロードモジュールを作成する。</td>
+                    </tr>
+                    <tr>
+                        <td>③ロード：主記憶にロードモジュールを持ってくる。ローダが行う。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">リンカ</td>
+                        <td>リンクさせるプログラム。</td>
+                    </tr>
+                    <tr>
+                        <td>静的リンク：あらかじめリンク。</td>
+                    </tr>
+                    <tr>
+                        <td>動的リンク：実行中にモジュールが必要なタイミングでリンク。DLL（動的リンクライブラリ）は動的リンク前提のモジュール。</td>
+                    </tr>
+                    <tr>
+                        <td>リファクタリング</td>
+                        <td>プログラムの動作を変更することなくソースを変えること。名前変更とか。</td>
+                    </tr>
+                    <tr>
+                        <td>リバースエンジニアリング</td>
+                        <td>ソースからプログラムの仕様を復元すること。設計書の逆生成とか。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">オブジェクト指向</td>
+                        <td>データと処理をひとまとめにしてオブジェクトという単位でとらえる手法。</td>
+                    </tr>
+                    <tr>
+                        <td>属性（データ）とメソッド（処理）をクラス（オブジェクトの設計図）に保存する。</td>
+                    </tr>
+                    <tr>
+                        <td>作られたオブジェクトをインスタンスと呼ぶ。</td>
+                    </tr>
+                    <tr>
+                        <td>カプセル化</td>
+                        <td>データとデータにアクセスする手続きを1つのオブジェクトにまとめて外から見えないようにすること。</td>
+                    </tr>
+                    <tr>
+                        <td>汎化⇔特化と継承</td>
+                        <td>車クラス（車設計図）とタクシークラス（タクシー設計図）の関係だと、
+                    <br/>車はタクシーを汎化させたもの、逆は特化、タクシーは車を継承しているという。</td>
+                    </tr>
+                    <tr>
+                        <td>オーバーライド</td>
+                        <td>メソッドを派生クラスで再定義すること。生物の呼吸は、魚ではエラ呼吸になる。</td>
+                    </tr>
+                    <tr>
+                        <td>集約ー分解</td>
+                        <td>部品と完成物の関係。継承関係はない。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">UML</td>
+                        <td>Unified Modeling Language：オブジェクト指向の設計図。</td>
+                    </tr>
+                    <tr>
+                        <td>クラス図：クラス（属性、操作）をそれぞれ関係しているもの間でつなぎ、相対する役割名を書く。</td>
+                    </tr>
+                    <tr>
+                        <td>オブジェクト図：クラス図のオブジェクト版。具体的な値が入る。</td>
+                    </tr>
+                    <tr>
+                        <td>多重度：関連にも1対1や1対多などあり、それを複数を＊と書いて表す。</td>
+                    </tr>
+                    <tr>
+                        <td>ユースケース図</td>
+                        <td>機能とユーザ（アクター）の関係図。1ユーザはログインするし検索するし検索したらリンクから飛ぶ、とか。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">シーケンス図</td>
+                        <td>オブジェクト間の相互作用を時系列で表す。</td>
+                    </tr>
+                    <tr>
+                        <td>オブジェクトの生存期間を表すライフライン、アクション期間を表すアクティベーション、相互の手続きをメッセージで表す。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">ホワイトボックステスト</td>
+                        <td>単体テスト。中身の値全部見る。</td>
+                    </tr>
+                    <tr>
+                        <td>命令網羅：全命令を実行。</td>
+                    </tr>
+                    <tr>
+                        <td>判定条件網羅：全分岐を実行。</td>
+                    </tr>
+                    <tr>
+                        <td>条件網羅：分岐のが複数あるとき、真と偽を組み合わせる。</td>
+                    </tr>
+                    <tr>
+                        <td>複数条件網羅：条件としてあり得る値をすべて網羅。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">ブラックボックステスト</td>
+                        <td>単体テスト。入出力のみ見る。</td>
+                    </tr>
+                    <tr>
+                        <td>同値分割法：代表値を使ってテスト。</td>
+                    </tr>
+                    <tr>
+                        <td>境界値分析：境目を使ってテスト。最大入力文字数ならあり得る最大値と、ギリギリダメな数値。</td>
+                    </tr>
+                    <tr>
+                        <td>ボトムアップテスト</td>
+                        <td>結合テスト。上位モジュールにドライバと呼ぶダミーモジュールを使用する。</td>
+                    </tr>
+                    <tr>
+                        <td>トップダウンテスト</td>
+                        <td>結合テスト。下位モジュールにスタブと呼ぶダミーモジュールを使用する。</td>
+                    </tr>
+                    <tr>
+                        <td>ストレステスト</td>
+                        <td>負荷に耐えられるかテスト。アクセス数やデータを大きさとか。</td>
+                    </tr>
+                    <tr>
+                        <td>リグレッションテスト</td>
+                        <td>プログラムの変更をしたとき、他のモジュールに影響ないかテスト。</td>
+                    </tr>
+                    <tr>
+                        <td>静的テストツール</td>
+                        <td>ソースを分析し、プログラムの誤りを検出する自動化ツール。</td>
+                    </tr>
+                    <tr>
+                        <td>信頼度成長曲線</td>
+                        <td>ゴンペルツ曲線とも。テストの消化項目とバグの数は、テストが増えるほど累積バグ数は増えなくなっていく。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">レビュー</td>
+                        <td>デザインレビュー：設計段階のレビュー。仕様の不備を探す。</td>
+                    </tr>
+                    <tr>
+                        <td>コードレビュー：プログラムのミスを発見する。</td>
+                    </tr>
+                    <tr>
+                        <td>ウォークスルー</td>
+                        <td>作った人が他の人に説明するレビュー</td>
+                    </tr>
+                    <tr>
+                        <td>インスペクション</td>
+                        <td>第三者が議長（モデレータ）になってレビュー</td>
+                    </tr>
+                </table>
+            </div><!-- /.collapse -->
+        </div><!-- /.card -->
+        <div class="card">
+            <div class="card-header" role="tab" id="algoheader">
+                <h5 class="mb-0">
+                    <a href="#algo" class="collapsed text-body" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="algo">
+                        アルゴリズム
+                    </a>
+                </h5>
+            </div><!-- /.card-header -->
+            <div class="collapse" role="tabpanel" id="algo" aria-labelledby="algo" aria-expanded="false">
+                <table class="table-striped table-bordered">
+                    <tr>
+                        <td rowspan="5">データ構造</td>
+                        <td>キュー：FIFO。ディスク入出力やOSのタスクなどの順番管理に使われる。</td>
+                    </tr>
+                    <tr>
+                        <td>スタック：LIFO。関数の呼び出しに使われる。</td>
+                    </tr>
+                    <tr>
+                        <td>配列：順番に並んだアドレスに何番目かを指定する。</td>
+                    </tr>
+                    <tr>
+                        <td>リスト：離れたデータ同士をつないで並べる。データとポインタとつないで保存することでできる。</td>
+                    </tr>
+                    <tr>
+                        <td>木構造：OSのフォルダなんかは木構造。すべてのデータで親子の大小が一貫しているものをヒープという。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">ポインタの種類</td>
+                        <td>単方向連結リスト：ポインタは次のデータの場所だけ示す。</td>
+                    </tr>
+                    <tr>
+                        <td>双方向連結リスト：前後のデータの場所を示す。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">探索法</td>
+                        <td>線形探索法：前から順番に探していく。平均比較回数は（ｎ＋１）/ ２回</td>
+                    </tr>
+                    <tr>
+                        <td>二分探索法：整列されているデータを中央値で探していく。平均比較回数はlog₂ｎ回</td>
+                    </tr>
+                    <tr>
+                        <td>ハッシュ探索法：定めた関数で算出されるアドレスに値を格納しておくことで、関数でいつでも呼び出せる。</td>
+                    </tr>
+                    <tr>
+                        <td>シノニム</td>
+                        <td>ハッシュ関数で算出される値が同じとき、二つ格納しようとしてエラー</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="6">整列</td>
+                        <td>バブルソート：隣の大小を比較して交換していく。比較回数はｎ（ｎ－１）/ ２回</td>
+                    </tr>
+                    <tr>
+                        <td>選択ソート：隣の大小を比較して最小値（最大値）を順に格納していく。比較回数はｎ（ｎ－１）/ ２回</td>
+                    </tr>
+                    <tr>
+                        <td>挿入ソート：一つの値に着目して隣の大小を比較して交換していく。</td>
+                    </tr>
+                    <tr>
+                        <td>シェルソート：一定間隔おきに部分列をつくり、それぞれ挿入法を行い、同じ間隔に入れ込み、挿入法をする。
+                            <br/>比較作業の数を減らせる。</td>
+                    </tr>
+                    <tr>
+                        <td>クイックソート：基準値を決めて、大小で分割する。分割できなくなるまで繰り返したら、終了</td>
+                    </tr>
+                    <tr>
+                        <td>ヒープソート：未整列のデータをヒープに構成し、親の値を配列に格納するのを繰り返す。</td>
+                    </tr>
+                    <tr>
+                        <td>再帰アルゴリズム</td>
+                        <td>関数の中で自分自身を呼び出して処理を繰り返すアルゴリズム</td>
+                    </tr>
+                    <tr>
+                        <td>オーダ</td>
+                        <td>実行速度を命令数を基準に測る指標。</td>
+                    </tr>
+                </table>
+            </div><!-- /.collapse -->
+        </div><!-- /.card -->
+        <div class="card">
+            <div class="card-header" role="tab" id="networkheader">
+                <h5 class="mb-0">
+                    <a href="#network" class="collapsed text-body" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="network">
+                        ネットワーク
+                    </a>
+                </h5>
+            </div><!-- /.card-header -->
+            <div class="collapse" role="tabpanel" id="network" aria-labelledby="network" aria-expanded="false">
+                <table class="table-striped table-bordered">
+                    <tr>
+                        <td>CSMA/CD方式</td>
+                        <td>回線が使用中なら少し待って送信する。人多いと遅くなる現象。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">WAN</td>
+                        <td>LAN同士を接続してできる広域ネットワーク</td>
+                    </tr>
+                    <tr>
+                        <td>専用線方式：接続したいLAN同士を専用の回線でつなぐ。</td>
+                    </tr>
+                    <tr>
+                        <td>パケット交換方式：データをパケットという単位に分割し、共有回線を経由して送信。</td>
+                    </tr>
+                    <tr>
+                        <td>FTTH</td>
+                        <td>Fiber To The Home ：光回線などのWANサービス</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="8">OSI基本参照モデル</td>
+                        <td>ISOが定めたプロトコルの標準規格。</td>
+                    </tr>
+                    <tr>
+                        <td>⑦アプリケーション層：メールやWebページ閲覧など、具体的な通信プロトコルを規定。</td>
+                    </tr>
+                    <tr>
+                        <td>⑥プレゼンテーション層：文字コードや暗号など、データの表現形式に関するプロトコルを規定。</td>
+                    </tr>
+                    <tr>
+                        <td>⑤セション層：通信の開始終了などの手順に関するプロトコルを規定。</td>
+                    </tr>
+                    <tr>
+                        <td>④トランスポート層：通信の信頼性を確保するためのプロトコルを規定。</td>
+                    </tr>
+                    <tr>
+                        <td>③ネットワーク層：通信経路の選択や中継を行うプロトコルを規定。</td>
+                    </tr>
+                    <tr>
+                        <td>②データリンク層：誤り制御など伝送制御手順に関するプロトコルを規定。</td>
+                    </tr>
+                    <tr>
+                        <td>①物理層：電気、物理的なプロトコルを規定。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">ネットワーク機器</td>
+                        <td>リピータ：伝送距離を延ばす。物理層で動く。</td>
+                    </tr>
+                    <tr>
+                        <td>ブリッジ：宛先のMACアドレスをみてデータ中継。データリンク層で動く。</td>
+                    </tr>
+                    <tr>
+                        <td>ルータ：宛先IPアドレスを見て、異なるネットワークにデータを中継する。ネットワーク層で動作。</td>
+                    </tr>
+                    <tr>
+                        <td>ゲートウェイ：第七層から第四層のプロトコルが異なるLAN同士を相互に通信。</td>
+                    </tr>
+                    <tr>
+                        <td>ARP</td>
+                        <td>IPアドレスからMACアドレスを取得するプロトコル</td>
+                    </tr>
+                    <tr>
+                        <td>RARP</td>
+                        <td>MACアドレスからIPアドレスを取得するプロトコル</td>
+                    </tr>
+                    <tr>
+                        <td>TCP/IP</td>
+                        <td>インターネットで使われる事実上の標準規格のプロトコル群</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="8">TCP/IP・アプリケーション層</td>
+                        <td>OSIの⑦⑥⑤に対応。</td>
+                    </tr>
+                    <tr>
+                        <td>HTTP(Hypertext Transper Protocol)：Webページを送受信するプロトコル</td>
+                    </tr>
+                    <tr>
+                        <td>FTP(File Transfer Protocol)：ファイル転送のプロトコル。転送と制御に異なるポートを使用。</td>
+                    </tr>
+                    <tr>
+                        <td>TELNET：遠隔操作のプロトコル</td>
+                    </tr>
+                    <tr>
+                        <td>SMTP(Simple Mail Transfer Protocol)：メールサーバ間でメールの転送を行う。</td>
+                    </tr>
+                    <tr>
+                        <td>POP3(Post Office Protocol 3)：メールサーバのメールをメーラが受信するためのプロトコル</td>
+                    </tr>
+                    <tr>
+                        <td>NTP(Network Time Protocol)：時刻同期のプロトコル</td>
+                    </tr>
+                    <tr>
+                        <td>SNMP(Simple Network Management Protocol)：ネットワークの管理を行うプロトコル</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">TCP/IP・トランスポート層</td>
+                        <td>OSIの④に対応。</td>
+                    </tr>
+                    <tr>
+                        <td>TCP：確実にデータを届ける。HTTPやFTPで使う。</td>
+                    </tr>
+                    <tr>
+                        <td>UDP：素早く届ける。NTPで使う。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">TCP/IP・インターネット層</td>
+                        <td>OSIの③に対応。</td>
+                    </tr>
+                    <tr>
+                        <td>IP：IPv4プロトコルのこと。ネットワークの住所を割り振る。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">TCP/IP・ネットワークインターフェース層</td>
+                        <td>OSIの②①に対応。</td>
+                    </tr>
+                    <tr>
+                        <td>PPP、イーサネット</td>
+                    </tr>
+                    <tr>
+                        <td>SMTP-AUTH</td>
+                        <td>電子メールの送信時に送信側で送信者を認証する仕組み。</td>
+                    </tr>
+                    <tr>
+                        <td>MIME</td>
+                        <td>音声や画像を使えるようにしたメールの規格。</td>
+                    </tr>
+                    <tr>
+                        <td>S/MIME</td>
+                        <td>MIMEの暗号化と署名を行えるようにした規格。ディジタル署名を利用。</td>
+                    </tr>
+                    <tr>
+                        <td>パンくずリスト</td>
+                        <td>Webページ情報に表示する、トップページから現在見ているページまでの階層情報</td>
+                    </tr>
+                    <tr>
+                        <td>CGI</td>
+                        <td>Common Gateway Interface ：Webサーバで外部プログラムを実行し、Webページを作成し要求ユーザに送信する。</td>
+                    </tr>
+                    <tr>
+                        <td>Javaサーブレット</td>
+                        <td>Javaで書かれたWebアプリ。CGIより効率よく動く。</td>
+                    </tr>
+                    <tr>
+                        <td>アプレット</td>
+                        <td>コンパイル済みの、コンピュータが実行するのに適した形で保存されたプログラム。</td>
+                    </tr>
+                    <tr>
+                        <td>Ajax</td>
+                        <td>ブラウザとWebサーバが非同期通信を行い、動的に画面を更新する仕組み。</td>
+                    </tr>
+                    <tr>
+                        <td>SOAP</td>
+                        <td>Webサービスなどで、XML形式で記述したメッセージを交換するプロトコル</td>
+                    </tr>
+                    <tr>
+                        <td>DNS</td>
+                        <td>Domain Name System：IPアドレスとドメイン名の対応付けを管理する仕組み。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">NAPT</td>
+                        <td>Network Address Port Translation ：グローバルIPアドレスを複数のプライベートIPアドレスに変換する技術。ルータが行う。</td>
+                    </tr>
+                    <tr>
+                        <td>NAT：1対1のNAPT</td>
+                    </tr>
+                    <tr>
+                        <td>IPv6</td>
+                        <td>128ビットでIPアドレスを構成するプロトコル</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="6">IPアドレス</td>
+                        <td>32ビットの前半がネットワーク部、後半はホスト部。ネットワーク部が住所を表し、ホスト部の数だけ接続できる。</td>
+                    </tr>
+                    <tr>
+                        <td>先頭が1~127で始まるIPアドレスはループバックアドレスといい、自分自身を表す。</td>
+                    </tr>
+                    <tr>
+                        <td>クラスA：10.0.0.0~10.255.255.255 大規模ネットワーク用。24bitがホスト部。</td>
+                    </tr>
+                    <tr>
+                        <td>クラスB：172.16.0.0~172.31.255.255 中規模ネットワーク用。16bitがホスト部。</td>
+                    </tr>
+                    <tr>
+                        <td>クラスC：192.168.0.0~192.168.255.255 小規模ネットワーク用。8bitがホスト部。</td>
+                    </tr>
+                    <tr>
+                        <td>D
+                            <br/>Eは特別な要素に使う。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">サブネットマスク</td>
+                        <td>ネットワーク部とホスト部の境界を表す数値。ネットワーク部は住所なので、同じ数値だと混雑する。</td>
+                    </tr>
+                    <tr>
+                        <td>ネットワーク部を1、ホスト部を0で表し、ネットワーク部とホスト部の境界を自由に変更できる。</td>
+                    </tr>
+                    <tr>
+                        <td>11111111.11111111.11111111.11110000＝255.255.255.240　このときクラスCから4bit分拡張。</td>
+                    </tr>
+                    <tr>
+                        <td>ネットワークアドレス</td>
+                        <td>ホスト部がすべて0のIPアドレス。ネットワーク自体を表す。</td>
+                    </tr>
+                    <tr>
+                        <td>ブロードキャストアドレス</td>
+                        <td>ホスト部がすべて1のIPアドレス。ネットワークのすべてのホストに一斉送信するために使用する。</td>
+                    </tr>
+                    <tr>
+                        <td>データ伝送速度</td>
+                        <td>単位はbps(bit per second)</td>
+                    </tr>
+                    <tr>
+                        <td>回線利用率</td>
+                        <td>回線容量に対して使用可能な割合。速度に回線利用率ををかけた値が、真の回線速度</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">パリティチェック</td>
+                        <td>送信データビット列に、検査用ビットを付けることで誤り検知。</td>
+                    </tr>
+                    <tr>
+                        <td>データが奇数か偶数かを判別する。2bitずれると検知できない。</td>
+                    </tr>
+                    <tr>
+                        <td>ハミング符号方式</td>
+                        <td>同一のデータに複数のチェックコードを付ける。メモリの誤り制御に行われる。</td>
+                    </tr>
+                    <tr>
+                        <td>CRC</td>
+                        <td>Cyclic Redundancy Check：データを生成多項式で割った値をチェックコードとして付け加える。</td>
+                    </tr>
+                    <tr>
+                        <td>チェックディジット</td>
+                        <td>クレカとかに使われている。一定の計算式によって元のコードに数字を付加し、入力値の誤りを検出できる。</td>
+                    </tr>
+                </table>
+            </div><!-- /.collapse -->
+        </div><!-- /.card -->
+        <div class="card">
+            <div class="card-header" role="tab" id="dbheader">
+                <h5 class="mb-0">
+                    <a href="#db" class="collapsed text-body" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="db">
+                        データベース
+                    </a>
+                </h5>
+            </div><!-- /.card-header -->
+            <div class="collapse" role="tabpanel" id="db" aria-labelledby="db" aria-expanded="false">
+                <table class="table-striped table-bordered">
+                    <tr>
+                        <td rowspan="3">DB</td>
+                        <td>階層型DB：木の形。</td>
+                    </tr>
+                    <tr>
+                        <td>ネットワーク型DB：網の目の形。</td>
+                    </tr>
+                    <tr>
+                        <td>RDB：表形式。</td>
+                    </tr>
+                    <tr>
+                        <td>スキーマ</td>
+                        <td>データベースの想像や性質、形式などの定義</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">正規化</td>
+                        <td>正しくデータを管理できる表を作ること。</td>
+                    </tr>
+                    <tr>
+                        <td>第一正規化：繰り返しを取り除く。</td>
+                    </tr>
+                    <tr>
+                        <td>第二正規化：主キーによって他の項目が決まるように分別。</td>
+                    </tr>
+                    <tr>
+                        <td>第三正規化：主キー以外によって決定される項目を分別。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">ACID特性</td>
+                        <td>トランザクション（データの整合性を保つための一連の処理）処理の四つの要素。</td>
+                    </tr>
+                    <tr>
+                        <td>Atomicity：原子性。完全に処理するか、取り消すかのいずれかを保証する。</td>
+                    </tr>
+                    <tr>
+                        <td>Consisitency：一貫性。トランザクションの前後でデータの矛盾がないこと。</td>
+                    </tr>
+                    <tr>
+                        <td>Isolation：独立性。複数のトランザクションを同時実行しても順番に実行しても結果が同じになる。</td>
+                    </tr>
+                    <tr>
+                        <td>Durability：永続性。障害が発生しても正常終了したトランザクションの結果は失われず復旧できる。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">排他制御</td>
+                        <td>占有ロック：他のユーザは読み取りすらできない。</td>
+                    </tr>
+                    <tr>
+                        <td>共有ロック：他のユーザは書き込みはできない。他のユーザが占有ロックもかけれない。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">デッドロック</td>
+                        <td>複数のユーザが互いにデータの解放を待っていて、処理が進まないこと。</td>
+                    </tr>
+                    <tr>
+                        <td>ロックの粒度が小さいほうが競合がおきない。ただし、メモリ使用量が増える。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">DBMSのリカバリ</td>
+                        <td>ログファイルを使用して行う。</td>
+                    </tr>
+                    <tr>
+                        <td>ロールフォワード：障害が発生する直前までDBを復元する。</td>
+                    </tr>
+                    <tr>
+                        <td>ロールバック：トランザクションの開始直前までDBを復旧させる。</td>
+                    </tr>
+                    <tr>
+                        <td>インデックス</td>
+                        <td>DBMSがデータ検索を高速化する機能。頻繁に追加更新をしているとインデックスも更新してしまうため遅くなる。</td>
+                    </tr>
+                    <tr>
+                        <td>オプティマイザ</td>
+                        <td>DBMSが実行時間を最小化するように処理の方法を決める機能。</td>
+                    </tr>
+                    <tr>
+                        <td>二相コミット</td>
+                        <td>分散DBのトランザクション仕様。一連のトランザクション処理を行う複数サイトに問い合わせ、全サイトが実行可能であれば処理。</td>
+                    </tr>
+                </table>
+            </div><!-- /.collapse -->
+        </div><!-- /.card -->
+        <div class="card">
+            <div class="card-header" role="tab" id="secheader">
+                <h5 class="mb-0">
+                    <a href="#sec" class="collapsed text-body" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="sec">
+                        セキュリティ
+                    </a>
+                </h5>
+            </div><!-- /.card-header -->
+            <div class="collapse" role="tabpanel" id="sec" aria-labelledby="sec" aria-expanded="false">
+                <table class="table-striped table-bordered">
+                    <tr>
+                        <td rowspan="7">情報セキュリティとは</td>
+                        <td>機密性：情報漏洩しない</td>
+                    </tr>
+                    <tr>
+                        <td>完全性：情報が書き換えられたりしていない</td>
+                    </tr>
+                    <tr>
+                        <td>可用性：使いたいとき使えること</td>
+                    </tr>
+                    <tr>
+                        <td>真正性：なりすましでないこと</td>
+                    </tr>
+                    <tr>
+                        <td>信頼性：バグがないこと</td>
+                    </tr>
+                    <tr>
+                        <td>責任追跡性：だれがやらかしたかわかる</td>
+                    </tr>
+                    <tr>
+                        <td>否認防止：後からやってないよっていえない</td>
+                    </tr>
+                    <tr>
+                        <td>タイムスタンプサービス</td>
+                        <td>サーバが発行する情報とデータが持ってる情報を照合してデータがその時刻に存在していたことを証明する</td>
+                    </tr>
+                    <tr>
+                        <td>パスワードリスト攻撃</td>
+                        <td>使いまわしパスワードを攻撃</td>
+                    </tr>
+                    <tr>
+                        <td>フィッシング</td>
+                        <td>偽サイトで個人情報入力させる</td>
+                    </tr>
+                    <tr>
+                        <td>DNSキャッシュポイズニング</td>
+                        <td>DNSサーバにドメイン情報を誤認させて偽サーバに誘導</td>
+                    </tr>
+                    <tr>
+                        <td>SEOポイズニング</td>
+                        <td>検索結果の上位に悪意あるサイトを並べる。</td>
+                    </tr>
+                    <tr>
+                        <td>SQLインジェクション</td>
+                        <td>データベース情報を改ざん。  WHERE a OR 1=1</td>
+                    </tr>
+                    <tr>
+                        <td>DoS攻撃</td>
+                        <td>大量データを送信してサーバ決壊。</td>
+                    </tr>
+                    <tr>
+                        <td>ディレクトリトラバーサル攻撃</td>
+                        <td>管理者が許可していない権限で不正アクセス</td>
+                    </tr>
+                    <tr>
+                        <td>Webビーコン</td>
+                        <td>小さい画像を埋め込み、アクセス動向を盗む。</td>
+                    </tr>
+                    <tr>
+                        <td>キーロガー</td>
+                        <td>PCに入力を監視するスパイウェアを仕掛けて、パスワードを盗むとか。</td>
+                    </tr>
+                    <tr>
+                        <td>ブルートフォース攻撃</td>
+                        <td>総当たりでパスワード入力。</td>
+                    </tr>
+                    <tr>
+                        <td>クロスサイトスクリプティング</td>
+                        <td>Webページにjavascriptを埋め込む。エスケープされていないフォームからとか。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">リスクアセスメント</td>
+                        <td>リスク回避：原因排除</td>
+                    </tr>
+                    <tr>
+                        <td>リスク移転：肩代わり（保険）</td>
+                    </tr>
+                    <tr>
+                        <td>リスク軽減：損失の軽減（パスワード暗号化）</td>
+                    </tr>
+                    <tr>
+                        <td>リスク保有：なんもしない（どうでもいいもの）</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">ISMS</td>
+                        <td>Information Security Management System</td>
+                    </tr>
+                    <tr>
+                        <td>リスク分析→リスク評価→管理策の選択→適用宣言書の作成</td>
+                    </tr>
+                    <tr>
+                        <td>セキュリティバイデザイン</td>
+                        <td>設計の段階からセキュリティを考慮すること</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">マルウェア</td>
+                        <td>悪意のあるソフト全般</td>
+                    </tr>
+                    <tr>
+                        <td>・トロイの木馬：普通のソフトを装って侵入。データの破壊や改ざんをする。</td>
+                    </tr>
+                    <tr>
+                        <td>・ワーム型ウイルス：ネットワーク経由で自己増殖する。</td>
+                    </tr>
+                    <tr>
+                        <td>・ドライブバイダウンロード攻撃：Webサイトを閲覧したときマルウェアをダウンロードさせること</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">ウイルス対策</td>
+                        <td>パターンマッチング法：既知ウイルス情報を使用してウイルス検知</td>
+                    </tr>
+                    <tr>
+                        <td>ビヘイビア法：仮想環境で動作を見る</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">共通鍵暗号方式</td>
+                        <td>受信者と送信者が暗号化と復号に同じ鍵を使う。</td>
+                    </tr>
+                    <tr>
+                        <td>DES、AES</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">公開鍵暗号方式</td>
+                        <td>受信者の公開鍵を使って送信者が暗号化、受信者の秘密鍵で復号する。秘密鍵は知られてはいけない。</td>
+                    </tr>
+                    <tr>
+                        <td>RSA、楕円曲線暗号</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">ディジタル署名</td>
+                        <td>データ送信者の証明と改ざんされていないかどうかを確認する技術</td>
+                    </tr>
+                    <tr>
+                        <td>ハッシュ関数でメッセージを作成し、それを公開鍵暗号方式で送信、受信者はその逆で復号する。</td>
+                    </tr>
+                    <tr>
+                        <td>CA</td>
+                        <td>公開鍵が本人のものか証明する認証局</td>
+                    </tr>
+                    <tr>
+                        <td>SSL</td>
+                        <td>ウェブサーバとクライアント間の通信を暗号化するプロトコル</td>
+                    </tr>
+                    <tr>
+                        <td>IPsec</td>
+                        <td>インターネットで暗号通信をするための規格。IPパケットを暗号化して送受信</td>
+                    </tr>
+                    <tr>
+                        <td>2要素認証</td>
+                        <td>種類の異なる2要素で認証</td>
+                    </tr>
+                    <tr>
+                        <td>パスワードのハッシュ化</td>
+                        <td>ハッシュ関数で変換したハッシュ値でパスワードを保管。</td>
+                    </tr>
+                    <tr>
+                        <td>CAPTCHA</td>
+                        <td>ゆがめた画像から文字を判別させることで自動入力を排除</td>
+                    </tr>
+                    <tr>
+                        <td>バイオメトリクス認証</td>
+                        <td>虹彩や指紋など人間の身体的特徴で認証。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">ファイアウォール</td>
+                        <td>内部ネットワークと外部ネットワークの間に設置し、不正アクセスを禁止。</td>
+                    </tr>
+                    <tr>
+                        <td>DMZ：非武装地帯。ファイアウォールで内部とも外部とも隔離された場所。Webサーバを置く。DBサーバは内部に置く。</td>
+                    </tr>
+                    <tr>
+                        <td>WAF</td>
+                        <td>Web Application Firewall：Webアプリの入力内容をチェックして不正攻撃を排除すること。</td>
+                    </tr>
+                    <tr>
+                        <td>パケットフィルタリング</td>
+                        <td>IPやポート番号を識別し、通過させるパケットを制限すること。</td>
+                    </tr>
+                    <tr>
+                        <td>MACアドレスフィルタリング</td>
+                        <td>ARPを使ってMACアドレスを取得し、事前に登録されているMACアドレスのみを許可すること。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">プロキシ</td>
+                        <td>内部ネットワークにあるコンピュータのアクセスを中継し、代理でインターネットに接続するコンピュータ。</td>
+                    </tr>
+                    <tr>
+                        <td>内部ネットワーク内の情報を隠す。</td>
+                    </tr>
+                    <tr>
+                        <td>ペネトレーションテスト</td>
+                        <td>システムを実際に攻撃して侵入を試みるテスト</td>
+                    </tr>
+                    <tr>
+                        <td>バックドア</td>
+                        <td>侵入者が通常の経路以外から不正侵入するために仕掛けた裏経路。一回侵入されたらディスクやOSを見直さなきゃ。</td>
+                    </tr>
+                    <tr>
+                        <td>rootkit</td>
+                        <td>バックドアを作成し、侵入痕跡を隠蔽する不正プログラム</td>
+                    </tr>
+                </table>
+            </div><!-- /.collapse -->
+        </div><!-- /.card -->
+        <div class="card">
+            <div class="card-header" role="tab" id="pmheader">
+                <h5 class="mb-0">
+                    <a href="#pm" class="collapsed text-body" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="pm">
+                        PM
+                    </a>
+                </h5>
+            </div><!-- /.card-header -->
+            <div class="collapse" role="tabpanel" id="pm" aria-labelledby="pm" aria-expanded="false">
+                <table class="table-striped table-bordered">
+                    <tr>
+                        <td>ファンクションポイント法</td>
+                        <td>システム機能に着目し、難易度に応じてポイントを付け、機能の個数×点数で開発規模を見積もる手法</td>
+                    </tr>
+                    <tr>
+                        <td>WBS</td>
+                        <td>Work Breakdown Stracture：トップダウンで作業を細分化し、管理すること。</td>
+                    </tr>
+                    <tr>
+                        <td>スコープマネジメント</td>
+                        <td>プロジェクトの目的や範囲を明確にしたうえで、必要作業を洗い出す管理プロセス</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">アローダイヤグラム</td>
+                        <td>PERTとも。作業項目を矢印で表し、作業名と必要日数を書く。①→（ログイン機能：3日）②→</td>
+                    </tr>
+                    <tr>
+                        <td>作業の前後のみを表すときは点線矢印でつなぐ（日数０）</td>
+                    </tr>
+                    <tr>
+                        <td>クリティカルパス</td>
+                        <td>複数作業平行しているとき、もっとも時間のかかる作業経路のこと。</td>
+                    </tr>
+                    <tr>
+                        <td>クラッシング</td>
+                        <td>クリティカルパスにリソースを割いて、スケジュールを短縮すること。</td>
+                    </tr>
+                    <tr>
+                        <td>最早結合点時刻</td>
+                        <td>さいそうけつごうてんじこく：ある作業をもっとも早く開始できる所要日数。</td>
+                    </tr>
+                    <tr>
+                        <td>最遅結合点時刻</td>
+                        <td>さいちけつごうてんじこく：ある作業をプロジェクトに影響がなく、もっとも遅く開始した場合の日時。</td>
+                    </tr>
+                    <tr>
+                        <td>トレンドチャート</td>
+                        <td>進捗と予算を関連付けた折れ線グラフ。予定と実績を書く。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="6">サービスマネジメントプロセス</td>
+                        <td>運用プロセスについて定めたもの</td>
+                    </tr>
+                    <tr>
+                        <td>サービスレベル管理：サービス利用者と提供者で合意したサービス内容を管理</td>
+                    </tr>
+                    <tr>
+                        <td>キャパシティ管理：必要なIT資源の供給ができるように管理</td>
+                    </tr>
+                    <tr>
+                        <td>可用性管理：障害頻度を見積もり、サービスが中断しないよう管理</td>
+                    </tr>
+                    <tr>
+                        <td>インシデント管理：インシデントに際する業務の迅速な再開を優先した対策</td>
+                    </tr>
+                    <tr>
+                        <td>問題管理：インシデントの再発防止をする</td>
+                    </tr>
+                    <tr>
+                        <td>SLA</td>
+                        <td>Service Level Agreement：サービスの内容や品質をあらかじめ決めた合意書</td>
+                    </tr>
+                    <tr>
+                        <td>システム監査</td>
+                        <td>システムにまつわる様々なリスク対策ができているか、評価、検証すること。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">システム管理基準項目</td>
+                        <td>経済産業省が定めたシステム監査基準の、判断項目</td>
+                    </tr>
+                    <tr>
+                        <td>・全体最適化：経営戦略に沿ってシステムの最適化、整備計画の策定</td>
+                    </tr>
+                    <tr>
+                        <td>・組織体制、情報化投資計画、情報資産管理、事業継続計画、コンプライアンス</td>
+                    </tr>
+                    <tr>
+                        <td>・開発計画：費用、スケジュール、投資効果、開発体制</td>
+                    </tr>
+                    <tr>
+                        <td>システム監査人の独立性</td>
+                        <td>監査人は監査対象とは利害関係、精神上の偏りがあってはならない。</td>
+                    </tr>
+                    <tr>
+                        <td>監査調書</td>
+                        <td>監査業務の実施記録で、監査意見の根拠になるもの</td>
+                    </tr>
+                </table>
+            </div><!-- /.collapse -->
+        </div><!-- /.card -->
+        <div class="card">
+            <div class="card-header" role="tab" id="manageheader">
+                <h5 class="mb-0">
+                    <a href="#manage" class="collapsed text-body" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="manage">
+                        情報化と経営
+                    </a>
+                </h5>
+            </div><!-- /.card-header -->
+            <div class="collapse" role="tabpanel" id="manage" aria-labelledby="manage" aria-expanded="false">
+                <table class="table-striped table-bordered">
+                    <tr>
+                        <td>ディジタルディバイド</td>
+                        <td>IT知識や利用環境の違いにより生じる社会的・経済的格差</td>
+                    </tr>
+                    <tr>
+                        <td>CEO</td>
+                        <td>Chief Executive Officer：最高経営責任者</td>
+                    </tr>
+                    <tr>
+                        <td>COO</td>
+                        <td>Chief Operating Officer：最高執行責任者</td>
+                    </tr>
+                    <tr>
+                        <td>CIO</td>
+                        <td>Chief Information Officer：最高情報責任者</td>
+                    </tr>
+                    <tr>
+                        <td>アカウンタビリティ</td>
+                        <td>経営活動に関する説明責任</td>
+                    </tr>
+                    <tr>
+                        <td>ステークホルダ</td>
+                        <td>企業に対する利害責任者</td>
+                    </tr>
+                    <tr>
+                        <td>コーポレートガバナンス</td>
+                        <td>経営の透明性のために、企業活動を監督・監視する仕組み</td>
+                    </tr>
+                    <tr>
+                        <td>事業部制組織</td>
+                        <td>製品や市場、地域ごとに組織を分けて独立して仕事する</td>
+                    </tr>
+                    <tr>
+                        <td>マトリックス組織</td>
+                        <td>構成員が、事業部門と職能部門といった異なる部門の両方に所属する</td>
+                    </tr>
+                    <tr>
+                        <td>プロジェクト組織</td>
+                        <td>一定期間、特定のプロジェクトのために活動する</td>
+                    </tr>
+                    <tr>
+                        <td>BPR</td>
+                        <td>Business Process Reengineering：業務プロセスを根本的に改善</td>
+                    </tr>
+                    <tr>
+                        <td>BPM</td>
+                        <td>Business Process Management：業務プロセスの継続的な改善サイクル</td>
+                    </tr>
+                    <tr>
+                        <td>BCP</td>
+                        <td>Business Continuity Plan：予期せぬ事態が発生しても事業を継続するための行動計画</td>
+                    </tr>
+                    <tr>
+                        <td>ベンチマーキング</td>
+                        <td>自社の業務プロセス改善のために優良企業を参考にすること</td>
+                    </tr>
+                    <tr>
+                        <td>ニッチ戦略</td>
+                        <td>すきま産業参入を狙う経営計画</td>
+                    </tr>
+                    <tr>
+                        <td>コアコンピタンス</td>
+                        <td>他社にまねできない技術のこと</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">アンゾフの成長マトリクス</td>
+                        <td>企業がとるべき成長戦略（市場＆製品が指標）</td>
+                    </tr>
+                    <tr>
+                        <td>・多角化：新規市場＆新規製品</td>
+                    </tr>
+                    <tr>
+                        <td>・市場開拓：新規市場＆既存製品</td>
+                    </tr>
+                    <tr>
+                        <td>・新商品開発：既存市場＆新規製品</td>
+                    </tr>
+                    <tr>
+                        <td>・市場浸透：既存市場＆既存製品</td>
+                    </tr>
+                    <tr>
+                        <td>BPO</td>
+                        <td>Business Process Outsourcing ：業務委託</td>
+                    </tr>
+                    <tr>
+                        <td>EMS</td>
+                        <td>Electronics Manufacturing Service：電子機器の製造委託受け入れ</td>
+                    </tr>
+                    <tr>
+                        <td>アライアンス</td>
+                        <td>企業の弱点を補いあうように企業連携すること</td>
+                    </tr>
+                    <tr>
+                        <td>CSR調達</td>
+                        <td>自然環境、人権に配慮した原材料調達を業者に求めること</td>
+                    </tr>
+                    <tr>
+                        <td>グリーン調達</td>
+                        <td>環境負荷の低減に努める業者から原材料を調達すること</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">SWOT分析</td>
+                        <td>強み(Strengths)・弱み(Weaknesses)・機会(Opportunities)・脅威(Threats)</td>
+                    </tr>
+                    <tr>
+                        <td>の4つで企業の外部環境・内部環境を分析すること</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">PPM</td>
+                        <td>Product Portfolio management：製品や事業が市場でどの位置にあるか分析</td>
+                    </tr>
+                    <tr>
+                        <td>花形：市場成長率高：市場占有率高</td>
+                    </tr>
+                    <tr>
+                        <td>問題児：市場成長率高：市場占有率低</td>
+                    </tr>
+                    <tr>
+                        <td>金のなる木：市場成長率低：市場占有率高</td>
+                    </tr>
+                    <tr>
+                        <td>負け犬：市場成長率低：市場占有率低</td>
+                    </tr>
+                    <tr>
+                        <td>ITポートフォリオ</td>
+                        <td>リスクや投資価値が似たものを区分けし、組み合わせて最適な資源配分を行う手法</td>
+                    </tr>
+                    <tr>
+                        <td>バリューチェーン分析</td>
+                        <td>流通経路の工程ごとに価値創造ができているかを分析</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">バランススコアカード</td>
+                        <td>KPI（具体的な業績評価指標）を定めて経営戦略を管理</td>
+                    </tr>
+                    <tr>
+                        <td>戦略マップ：4つの視点から課題、施策、目標の因果関係を図示する</td>
+                    </tr>
+                    <tr>
+                        <td>・財務の視点・顧客の視点・業務プロセスの視点・学習と成長の視点</td>
+                    </tr>
+                    <tr>
+                        <td>ナレッジマネジメント</td>
+                        <td>企業内にある知識を組織全体で共有し、有効利用すること</td>
+                    </tr>
+                    <tr>
+                        <td>管理図</td>
+                        <td>折れ線グラフに基準値を決めて、それからはみだしたデータを異常値として検知する</td>
+                    </tr>
+                    <tr>
+                        <td>パレート図</td>
+                        <td>データを値が大きい順に棒グラフに並べて、累積割合を折れ線グラフで同時に表示したもの</td>
+                    </tr>
+                    <tr>
+                        <td>ABC分析</td>
+                        <td>パレート図を使って、割合の高いものからABCにランク付けする。売れ筋商品とか不具合の原因とか</td>
+                    </tr>
+                    <tr>
+                        <td>特性要因図</td>
+                        <td>特性という幹に、要因を枝として因果関係を表す。</td>
+                    </tr>
+                    <tr>
+                        <td>決定表</td>
+                        <td>条件とそれに対する処理を表形式で表す。テストの合否ならテスト項目：Y　不可ならN</td>
+                    </tr>
+                    <tr>
+                        <td>ファシリテータ</td>
+                        <td>中立の立場の会議の議長</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">エンタープライズアーキテクチャ</td>
+                        <td>組織全体の業務とシステムの統一管理手法</td>
+                    </tr>
+                    <tr>
+                        <td>・ビジネスアーキテクチャ：業務プロセスや情報の流れを体系的に示す</td>
+                    </tr>
+                    <tr>
+                        <td>・データアーキテクチャ：データの内容、データ間の関連や構造を体系的に示す</td>
+                    </tr>
+                    <tr>
+                        <td>・アプリケーションアーキテクチャ：システムの機能や構成を体系的に示す</td>
+                    </tr>
+                    <tr>
+                        <td>・テクノロジーアーキテクチャ：技術的に必要な構成要素を体系的に示す</td>
+                    </tr>
+                    <tr>
+                        <td>ERP</td>
+                        <td>Enterprise Resource Planning：経営資源を１つのシステムで一元管理</td>
+                    </tr>
+                    <tr>
+                        <td>SCM</td>
+                        <td>Supply Chain Management：商品を作るためのプロセスを管理</td>
+                    </tr>
+                    <tr>
+                        <td>SFA</td>
+                        <td>Sales Force Automation：営業の分析、管理</td>
+                    </tr>
+                    <tr>
+                        <td>CRM</td>
+                        <td>Customer Relationship Management ：顧客に関する状況の管理システム</td>
+                    </tr>
+                    <tr>
+                        <td>RSS</td>
+                        <td>Retail Support System：小売店支援システム</td>
+                    </tr>
+                    <tr>
+                        <td>トレーサビリティシステム</td>
+                        <td>流通の履歴を追跡するシステム</td>
+                    </tr>
+                    <tr>
+                        <td>POS</td>
+                        <td>Point Of Sales：レジでバーコードによって商品の販売情報を記録するシステム</td>
+                    </tr>
+                    <tr>
+                        <td>CAD</td>
+                        <td>Computer Aided Design：製品の形状や構造のデータから製品の設計図面を作るシステム</td>
+                    </tr>
+                    <tr>
+                        <td>FA</td>
+                        <td>Factory Automation：工場の機械を自動で動かすシステム</td>
+                    </tr>
+                    <tr>
+                        <td>MRP</td>
+                        <td>Material Requirements Planning：生産が予想される部品表と在庫情報から資源の発注量と発注時期を決定するシステム</td>
+                    </tr>
+                    <tr>
+                        <td>かんばん方式</td>
+                        <td>必要なときに必要な量だけ生産する方式。</td>
+                    </tr>
+                    <tr>
+                        <td>データマイニング</td>
+                        <td>データウェアハウス（企業のDB）から統計的に傾向や規則を見つけること</td>
+                    </tr>
+                    <tr>
+                        <td>RFID</td>
+                        <td>Suicaに使われてるICタグを使った読み取り技術</td>
+                    </tr>
+                    <tr>
+                        <td>ICカード</td>
+                        <td>ICチップで情報を記録できるようにしたカード。PIN（暗証番号）で不正アクセスを防ぐ</td>
+                    </tr>
+                    <tr>
+                        <td>CGM</td>
+                        <td>Consumer Generated Media：個人が制作したコンテンツを配信したり利用する仕組み</td>
+                    </tr>
+                    <tr>
+                        <td>IoT</td>
+                        <td>様々なものに通信機能を持たせて高度なサービスを実現すること</td>
+                    </tr>
+                    <tr>
+                        <td>ディープラーニング</td>
+                        <td>人間の神経回路を模倣してコンピュータに学習させる手法</td>
+                    </tr>
+                    <tr>
+                        <td>EC</td>
+                        <td>Electronic Commerce：電子商取引</td>
+                    </tr>
+                    <tr>
+                        <td>ロングテール</td>
+                        <td>売上が小さいものでもECならコストがないため、集まれば結果的に大きな利益になること</td>
+                    </tr>
+                    <tr>
+                        <td>ROI</td>
+                        <td>Return On Investment：投資利益率</td>
+                    </tr>
+                    <tr>
+                        <td>ハウジングサービス</td>
+                        <td>サーバや通信機器を設置する場所を提供するサービス</td>
+                    </tr>
+                    <tr>
+                        <td>ホスティングサービス</td>
+                        <td>サーバや通信機器を貸し出すサービス</td>
+                    </tr>
+                    <tr>
+                        <td>ASP</td>
+                        <td>インターネットを通じてソフトを提供すること</td>
+                    </tr>
+                    <tr>
+                        <td>SaaS</td>
+                        <td>Software as a Service：ソフトウェアの提供。ASPとはマルチテナント方式（複数の利用者でサーバを共有）であることが違う</td>
+                    </tr>
+                    <tr>
+                        <td>PaaS</td>
+                        <td>Platform as a Service：ハードウェアやOS、開発環境を提供。</td>
+                    </tr>
+                    <tr>
+                        <td>IaaS</td>
+                        <td>Infrastructure as a Service：サーバ、ストレージを提供。利用者がOSから準備。</td>
+                    </tr>
+                    <tr>
+                        <td>クラウドとオンプレミス</td>
+                        <td>サーバやミドルウェア、ソフトウェアをインターネットを通じて提供。オンプレは自社内設置</td>
+                    </tr>
+                    <tr>
+                        <td>BOYD</td>
+                        <td>Bring Your Own Device：個人のデバイスを仕事に利用</td>
+                    </tr>
+                    <tr>
+                        <td>SOA</td>
+                        <td>Service Oriented Architecture：既存のアプリを部品化し、新しいシステムを作る設計手法</td>
+                    </tr>
+                </table>
+            </div><!-- /.collapse -->
+        </div><!-- /.card -->
+        <div class="card">
+            <div class="card-header" role="tab" id="legalheader">
+                <h5 class="mb-0">
+                    <a href="#legal" class="collapsed text-body" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="legal">
+                        会計と法務
+                    </a>
+                </h5>
+            </div><!-- /.card-header -->
+            <div class="collapse" role="tabpanel" id="legal" aria-labelledby="legal" aria-expanded="false">
+                <table class="table-striped table-bordered">
+                    <tr>
+                        <td>損益分岐点</td>
+                        <td>=固定費÷(1-変動費率)</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="13">損益計算書（P/L）</td>
+                        <td>売上高</td>
+                    </tr>
+                    <tr>
+                        <td>売上原価</td>
+                    </tr>
+                    <tr>
+                        <td>売上総利益（売上高ー売上原価）</td>
+                    </tr>
+                    <tr>
+                        <td>販売費及び一般管理費</td>
+                    </tr>
+                    <tr>
+                        <td>営業利益（売上総利益ー販売費及び一般管理費）</td>
+                    </tr>
+                    <tr>
+                        <td>営業外利益</td>
+                    </tr>
+                    <tr>
+                        <td>営業外費用</td>
+                    </tr>
+                    <tr>
+                        <td>経常利益（営業利益＋営業外利益－営業外費用）</td>
+                    </tr>
+                    <tr>
+                        <td>特別利益</td>
+                    </tr>
+                    <tr>
+                        <td>特別損失</td>
+                    </tr>
+                    <tr>
+                        <td>税引前当期純利益（経常利益＋特別利益ー特別損失）</td>
+                    </tr>
+                    <tr>
+                        <td>法人税等</td>
+                    </tr>
+                    <tr>
+                        <td>当期純利益（税引前当期純利益ー法人税等）</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="6">貸借対照表（B/S）</td>
+                        <td>左に資産、右に負債を表し、財務状態を表す。</td>
+                    </tr>
+                    <tr>
+                        <td>流動資産：資産のうち決算から1年以内に現金化できるもの。預金、商品</td>
+                    </tr>
+                    <tr>
+                        <td>固定資産：資産のうち決算から1年以内に現金化できないものと、支払う必要がないもの。土地、建物</td>
+                    </tr>
+                    <tr>
+                        <td>流動負債：負債のうち決算から1年以内に支払うべきもの。支払い手形、短期借入金</td>
+                    </tr>
+                    <tr>
+                        <td>固定負債：負債のうち決算から1年を超えて返済するもの。社債</td>
+                    </tr>
+                    <tr>
+                        <td>純資産の部：資本金、過去利益の合計</td>
+                    </tr>
+                    <tr>
+                        <td>自己資本比率</td>
+                        <td>＝純資産÷総資産×100</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">キャッシュフロー計算書（C/F）</td>
+                        <td>お金の流れを表す</td>
+                    </tr>
+                    <tr>
+                        <td>・営業活動によるキャッシュフロー：本業の収支。商品販売</td>
+                    </tr>
+                    <tr>
+                        <td>・投資活動によるキャッシュフロー：将来のために使ったお金。固定資産や有価証券</td>
+                    </tr>
+                    <tr>
+                        <td>・財務活動によるキャッシュフロー：借りたお金や返したお金。株式や社債、借入金</td>
+                    </tr>
+                    <tr>
+                        <td>コストプラス法</td>
+                        <td>製造原価や営業費、希望する利幅を織り込んで製品の価格を決める方法</td>
+                    </tr>
+                    <tr>
+                        <td>内部統制</td>
+                        <td>内部組織で違法行為、不正、ミスを防ぐために、体制や仕組みを整えること。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">個人情報保護法</td>
+                        <td>個人を特定できる情報の取り扱いを定めている。</td>
+                    </tr>
+                    <tr>
+                        <td>個人情報を利用するときは使用目的以外に使用してはならず、第三者に漏らしてもいけない</td>
+                    </tr>
+                    <tr>
+                        <td>労働基準法</td>
+                        <td>最低限の労働基準を定めている。アルバイトにも適用。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">不正競争禁止法</td>
+                        <td>公正な競争が行われることを保護する。</td>
+                    </tr>
+                    <tr>
+                        <td>営業秘密を他社に漏らす、コピー商品を販売する、産地偽装などはダメ。</td>
+                    </tr>
+                    <tr>
+                        <td>独占禁止法</td>
+                        <td>寡占を禁止する。消費者の利益を守る。</td>
+                    </tr>
+                    <tr>
+                        <td>不正アクセス禁止法</td>
+                        <td>アクセス制限がされているコンピュータにアクセスすること、それを助長することを禁止する。</td>
+                    </tr>
+                    <tr>
+                        <td>サイバーセキュリティ基本法</td>
+                        <td>国民に対し、サイバーセキュリティ確保に注意を払うよう求める。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">直接雇用契約</td>
+                        <td>企業と労働者の間で直接結ぶ契約。</td>
+                    </tr>
+                    <tr>
+                        <td>・裁量労働制：労働時間の計算をあらかじめ定めたみなし時間で行う制度</td>
+                    </tr>
+                    <tr>
+                        <td>・ワークシェアリング：仕事の配分を見直すことで従業員1人当たりの勤務時間を短縮し、雇用を確保すること。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">派遣契約</td>
+                        <td>指揮命令系統は派遣先、契約は派遣会社。</td>
+                    </tr>
+                    <tr>
+                        <td>派遣先への転職の自由、二重契約の禁止などが定められている。</td>
+                    </tr>
+                    <tr>
+                        <td>請負契約</td>
+                        <td>仕事を完成させた結果に対して対価を払う契約。</td>
+                    </tr>
+                    <tr>
+                        <td>純委任契約</td>
+                        <td>仕事をすることを約束する契約。専門家として一般的に期待されるレベルの注意義務がある。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">知的財産権</td>
+                        <td>著作権と産業財産権がある。</td>
+                    </tr>
+                    <tr>
+                        <td>人や企業が考えて作ったものを、第三者が勝手にまねしたり売ったりすることを禁止する。</td>
+                    </tr>
+                    <tr>
+                        <td>私的利用は大丈夫。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">著作権</td>
+                        <td>文章・音楽・絵画・写真・コンピュータプログラム・データベースを創作したとき、自動的に発生する。</td>
+                    </tr>
+                    <tr>
+                        <td>プログラムの著作権は受注した側に帰属する。</td>
+                    </tr>
+                    <tr>
+                        <td>アルゴリズム、プログラム言語は著作物にならない。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">産業財産権</td>
+                        <td>特許庁に発明やデザインを登録することで適用される。</td>
+                    </tr>
+                    <tr>
+                        <td>特許権：アイデアや発明。</td>
+                    </tr>
+                    <tr>
+                        <td>実用新案権：商品をよりよくするためのアイデア</td>
+                    </tr>
+                    <tr>
+                        <td>意匠権：デザイン</td>
+                    </tr>
+                    <tr>
+                        <td>商標権：サービスを区別するためのロゴマーク</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">特許クロスライセンス</td>
+                        <td>特許権の権利者同士が相互に相手の特許権を使用できるように契約すること。</td>
+                    </tr>
+                    <tr>
+                        <td>包括的クロスライセンス：分野を特定したうえで、特許クロスライセンス</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="11">OSS</td>
+                        <td>Open Source Software：改変や再配布ができるソフトウェア。著作権は放棄されていない。</td>
+                    </tr>
+                    <tr>
+                        <td>・再配布の自由を許可する。</td>
+                    </tr>
+                    <tr>
+                        <td>・ソースコードの再配布を許可する。</td>
+                    </tr>
+                    <tr>
+                        <td>・派生ソフトウェアの配布を許可する。</td>
+                    </tr>
+                    <tr>
+                        <td>・作者のソースコードの完全性を守る。</td>
+                    </tr>
+                    <tr>
+                        <td>・個人やグループに対して差別を禁止する</td>
+                    </tr>
+                    <tr>
+                        <td>・利用する分野の差別を禁止する</td>
+                    </tr>
+                    <tr>
+                        <td>・再配布時に、追加ライセンスを必要としない</td>
+                    </tr>
+                    <tr>
+                        <td>・特定のソフトウェアに依存しない</td>
+                    </tr>
+                    <tr>
+                        <td>・同じ媒体で配布される他のソフトウェアを制限しない</td>
+                    </tr>
+                    <tr>
+                        <td>・特定の技術やインターフェースに依存しない</td>
+                    </tr>
+                    <tr>
+                        <td>コピーレフト</td>
+                        <td>著作権は保持したまま、複製や改変、再配布を許可し、派生物にはオリジナルと同じ配布条件を適用。</td>
+                    </tr>
+                    <tr>
+                        <td>ISO</td>
+                        <td>工業と技術に関する国際規格を標準化</td>
+                    </tr>
+                    <tr>
+                        <td>IEEE</td>
+                        <td>LAN、Bluetoothの技術を標準化</td>
+                    </tr>
+                    <tr>
+                        <td>W3C</td>
+                        <td>Webで使用される技術を標準化</td>
+                    </tr>
+                    <tr>
+                        <td>日本工業標準調査会</td>
+                        <td>国内の工業製品規格（JIS）を標準化</td>
+                    </tr>
+                    <tr>
+                        <td>ISO9000シリーズ</td>
+                        <td>製品・サービスの品質マネジメントシステムの国際標準規格。</td>
+                    </tr>
+                    <tr>
+                        <td>ISO14000シリーズ</td>
+                        <td>環境マネジメントシステムの国際標準規格。</td>
+                    </tr>
+                    <tr>
+                        <td>ISO27000シリーズ</td>
+                        <td>情報セキュリティマネジメントシステムの国際標準規格。</td>
+                    </tr>
+                    <tr>
+                        <td>JANコード</td>
+                        <td>普遍的なバーコード</td>
+                    </tr>
+                    <tr>
+                        <td>QRコード</td>
+                        <td>英数字や漢字なども読み取れるバーコード</td>
+                    </tr>
+                </table>
+            </div><!-- /.collapse -->
+        </div><!-- /.card -->
+    </div>
+</div>
+{%endblock%}

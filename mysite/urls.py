@@ -22,4 +22,5 @@ urlpatterns = [
     path('techskill/java/ramuda/', views.javaramuda, name='javaramuda'),
     path('techskill/java/thread/', views.javathread, name='javathread'),
     path('techskill/java/date/', views.javadate, name='javadate'),
+    path('memo/kihonjouhou/', views.kihonjouhou, name='kihonjouhou'),
 ]

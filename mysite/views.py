@@ -80,3 +80,6 @@ class mysiteView(View):
             'article_qs': models.Article.objects.all().order_by('-updateTime')[:5]
         }
         return render(request, 'mysite/mysite.html', d)
+
+def kihonjouhou(request):
+    return render(request, 'mysite/memo/kihonjouhou.html', )
